@@ -1,0 +1,27 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "^1.6.6",
+    "bootstrap": "3.3.7",
+    "font-awesome": "fontawesome#~4.6.1",
+    "angular-resource": "^1.6.6",
+    "angular-route": "^1.4.0",
+    "ng-dialog": "^1.4.0",
+    "angular-ui-router": "^1.0.10"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.4.0"
+  },
+  "appPath": "app",
+  "moduleName": "frontendApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}

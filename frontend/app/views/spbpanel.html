@@ -1,0 +1,59 @@
+<div class="col-md-11 col-md-offset-1">
+                <p style="padding: 15px"></p>
+                <div class="panel panel-default">  
+                    <div class="panel-heading">
+                        <p class="panel-title" style="color: black; font-size: 18px;">&nbsp;&nbsp;<strong>The Sport Bible</strong>&nbsp;&nbsp;<span class="label label-danger">&nbsp;Latest&nbsp;</span></p><br><br>
+                    </div> 
+                    <div class="panel-body">
+                        <div ng-if="!showPanel">
+                            <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messagePanel}}</a><br><br>
+                        </div>
+                        <div ng-if="showPanel" ng-repeat="sb in thesportbible.articles"><br>
+                            <a href="{{sb.url}}" style="max-width: 80%; font-size: 16px; font-weight: bold; color: black">{{sb.title}}&nbsp;|&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></a><br><br>
+                        </div><br>
+                    </div> 
+                </div>  
+                <p style="padding: 10px"></p>
+</div>
+
+<meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+<meta property="og:type"               content="article" />
+<meta property="og:title"              content="When Great Minds Don’t Think Alike" />
+<meta property="og:description"        content="How much does culture influence creative thinking?" />
+<meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+
+<html>
+<head>
+  <title>Your Website Title</title>
+    <!-- You can use Open Graph tags to customize link previews.
+    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
+  <meta property="og:url"           content="http://www.your-domain.com/your-page.html" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Your Website Title" />
+  <meta property="og:description"   content="Your description" />
+  <meta property="og:image"         content="http://www.your-domain.com/path/image.jpg" />
+</head>
+<body>
+
+  <!-- Load Facebook SDK for JavaScript -->
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
+  <!-- Your share button code -->
+  <div class="fb-share-button" 
+    data-href="http://www.your-domain.com/your-page.html" 
+    data-layout="button_count">
+  </div>
+
+</body>
+</html>
+
+<!-- http://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/17B9A/production/_92387179_gossip_promo.jpg -->
+
+<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fghettosports.herokuapp.com&layout=button_count&size=large&mobile_iframe=true&appId=465641287153087&width=84&height=28" width="84" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>

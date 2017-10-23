@@ -6,15 +6,26 @@ var gossipSchema = new Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User'
 	},
-	category: String,
-	newsagency: String,
+	category: { 
+		type: String,
+		default: "Football" 
+	},
+	newsagency: { 
+		type: String,
+		required: true 
+	},
 	link: String,
-	caption: String,
+	caption: { 
+		type: String,
+		required: true 
+	},
 	gossip: { 
 		type: String,
-        required: true
+        unique: true
 	}
-}, { timestamps: true });
+}, { 
+	timestamps: true 
+});
 
 gossipSchema.index({ caption: 'text' });
 

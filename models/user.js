@@ -11,18 +11,19 @@ var User = new Schema({
       type: String,
       match: /^http:\/\//i
     },
-    firstname: String,
-    lastname: String,
     admin: {
         type: Boolean,
         default: false
+    },
+    title: {
+        type: String,
+        default: 'Editor'
+    },
+    description: {
+        type: String,
+        default: ""
     }
 });
-
-//Instance method
-User.methods.getName = function() {
-	return (this.firstname + ' ' + this.lastname);
-};
 
 User.plugin(passportLocalMongoose);
 

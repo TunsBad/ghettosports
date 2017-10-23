@@ -1,0 +1,94 @@
+<div class="container">
+	<div class="row">
+        <div class="col-xs-12">
+            <ul class="breadcrumb">
+                <li><a ui-sref="app" class="active"><i>Home</i></a></li>
+            </ul>
+        </div>
+    </div>
+	<div class="row row-content">
+		<div class="col-xs-12 col-sm-12 col-md-8" ng-if="!showGossips">
+            <h3>{{message}}</h3>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-8" ng-if="showGossips">
+        	<div class="col-xs-12">
+
+        		<h1 ng-if="!showHline">Transfer gossip: {{messageHline}}</h1>
+                <h1 ng-if="showHline">Transfer gossip: {{currentHeadline.header}}</h1>
+
+        		<!-- {{Rose, Sanchez, Lemar, Messi, Moyes, Sagna - from server here}}-->
+        		<p style="padding: 7px"></p>
+        		<div class="col-xs-12 col-sm-6">
+        			<p style="font-size: 15px"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{HeadlineTimeDiffHrs}} hours ago | Football</p>
+        			<!-- {{6 hours ago - from server}}-->
+        		</div>
+        		<div class="col-sm-2 col-sm-offset-4 hidden-xs">
+        			<iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fghettosports.herokuapp.com&layout=button_count&size=large&mobile_iframe=true&appId=465641287153087&width=84&height=28" width="84" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe><br>
+        		</div>
+        		<br><hr class="hidden-xs">
+        	</div>
+        	<div class="col-xs-12">
+        	    <img class="col-xs-12" align="center" src="images/gossips2.jpg"; style="height: 190px; display: block;">
+        	</div>
+        	<div class="col-xs-12">
+        		<p style="padding: 9px"></p>
+        		<input type="text" id="searchbar" ng-change="update(searchText.querystring)" ng-model="searchText.querystring" class="search-bar-input" placeholder=" Search gossip by team or player name ..." />
+                <p style="padding: 1px"></p>
+        	</div>
+            <div class="col-xs-12" ng-if="showSR">
+                <div style="padding: 2px">
+                    <p style="font-size: 25px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Search results for "{{searchText.querystring}}"&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p><br>
+                </div>
+                <!-- Loading -->
+                <div ng-repeat="result in results" style="padding: 2px"> 
+                     <p style="font-size: 17px"><strong>{{result.caption}}</strong> {{result.gossip}}&nbsp;<strong><a style="color: black" href="{{result.link}}">({{result.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p><!-- target="_blank"-->
+                </div>
+            </div>
+        	<div class="col-xs-12" ng-if="!showSR">
+        		<p style="padding: 2px"></p>
+                <div style="padding: 2px">
+                    <p style="font-size: 25px">Transfer news&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p>
+                </div>
+                <div ng-repeat="gossip in gossips" style="padding: 5px">
+        		    <p style="font-size: 17px"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p><!-- target="_blank"-->
+                </div>
+                <p style="padding: 10px"></p>
+        	</div>
+        </div>
+
+        <div class="hidden-xs hidden-sm col-md-4">
+            <div class="col-md-11 col-md-offset-1"><p style="padding: 25px"></p></div>
+            <div class="col-md-11 col-md-offset-1" style="border-left: 1px solid #666666; border-right: 1px solid #666666; border-top: 1px solid #666666; border-bottom: 1px solid #666666;">
+                <p style="padding: 5px"></p>
+                <p style="font-size: 21px; padding: 1px"><span class="glyphicon glyphicon-fire" style="color: red" aria-hidden="true"></span>&nbsp;&nbsp;<span class="label label-danger">&nbsp;Hot&nbsp;</span>&nbsp;&nbsp;News</p><hr>
+                <p style="padding: 1px"></p>
+                <div ng-if="!showTop">
+                    <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageTop}}</a><br><br>
+                </div>
+                <div ng-repeat="tp in topstories" ng-if="showTop">
+                    <a href="{{tp.link}}" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{tp.title}}</a><br><p style="padding: 1px"></p>
+                    &nbsp;<span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{tp.TimeDifference}} h | {{tp.category}}
+                    <p style="padding: 6px"></p>
+                </div>
+                <p style="padding: 7px"></p>
+            </div>
+            <div class="col-md-11 col-md-offset-1"><p style="padding: 5px"></p></div>
+            <div class="col-md-11 col-md-offset-1" style="border-left: 1px solid #666666; border-right: 1px solid #666666; border-top: 1px solid #666666; border-bottom: 1px solid #666666;"><br>
+                <p style="font-size: 21px; padding: 1px"><span class="glyphicon glyphicon-bookmark" style="color: green" aria-hidden="true"></span>&nbsp;&nbsp;Ghana News</p><hr>
+                <p style="padding: 1px"></p>
+                <div ng-if="!showGh">
+                    <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageGh}}</a><br><br>
+                </div>
+                <div ng-repeat="gh in ghstories" ng-if="showGh">
+                    <a href="{{gh.link}}" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{gh.title}}</a><br><p style="padding: 1px"></p>
+                    &nbsp;<span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{gh.TimeDifference}} h | {{gh.category}}
+                    <p style="padding: 6px"></p>
+                </div>
+                <p style="padding: 7px"></p>
+            </div>
+            <div class="col-md-11 col-md-offset-1"><p style="padding: 20px"></p></div>
+        </div>  
+
+	</div>
+</div>

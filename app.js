@@ -13,6 +13,7 @@ var config = require('./config');
 mongoose.Promise = global.Promise;
 
 mongoose.connect(config.mongoUrl, { useMongoClient: true });
+
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {
@@ -24,6 +25,9 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var gossipRouter = require('./routes/gossipRouter');
 var enquiryRouter = require('./routes/enquiryRouter');
+var topstoryRouter = require('./routes/topstoryRouter');
+var ghstoryRouter = require('./routes/ghstoryRouter');
+var headlineRouter = require('./routes/headlineRouter');
 
 var app = express();
 
@@ -43,12 +47,15 @@ app.use(cookieParser());
 // passport config
 app.use(passport.initialize());
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'frontend/app')));
 
 app.use('/', index);
 app.use('/users', users);
 app.use('/gossips', gossipRouter);
 app.use('/enquiries', enquiryRouter);
+app.use('/topstories', topstoryRouter);
+app.use('/ghstories', ghstoryRouter);
+app.use('/headlines', headlineRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

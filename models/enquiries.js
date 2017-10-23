@@ -6,15 +6,17 @@ var enquirySchema = new Schema({
         type: String,
         required: true
     },
-    email: String,
+    email: { 
+        type: String,
+        required: true
+    },
     phone: String,
     subject: {
     	type: String,
     	required: true
     },
     comment: {
-        type: String,
-        required: true
+        type: String
     }
 }, {
     timestamps: true

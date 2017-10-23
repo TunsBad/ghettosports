@@ -3,10 +3,11 @@ var bodyParser = require('body-parser');
 var Enquiries = require('../models/enquiries');
 var Verify = require('./verify');
 
-var enquiryRouter = express.Router()
-enquiryRouter.use(bodyParser.json())
+var enquiryRouter = express.Router();
+enquiryRouter.use(bodyParser.json());
 
 enquiryRouter.route('/')
+
 .get(Verify.verifyOrdinaryUser, function(req, res, next) {
     Enquiries.find(req.query, function(err, enquiries) {
         if (err) next(err);
