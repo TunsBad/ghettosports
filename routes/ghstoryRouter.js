@@ -8,13 +8,14 @@ ghstoryRouter.use(bodyParser.json());
 
 ghstoryRouter.route('/')
 .get(function(req, res, next) {
-    GhStories.find(req.query, function(err, ghstories) {
-        if (err) next(err);
+    GhStories.find(req.query)
+        .sort({ time: -1 })
+        .exec(function(err, ghstories) {
+            if (err) next(err);
 
-        res.json(ghstories);
-    });
+            res.json(ghstories);
+        });
 })
-//Verify.verifyOrdinaryUser,
 .post(Verify.verifyOrdinaryUser, function(req, res, next) {
     GhStories.create(req.body, function(err, ghstory) {
         if (err) next(err);

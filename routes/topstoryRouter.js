@@ -8,13 +8,14 @@ topstoryRouter.use(bodyParser.json());
 
 topstoryRouter.route('/')
 .get(function(req, res, next) {
-    TopStories.find(req.query, function(err, topstories) {
-        if (err) next(err);
+    TopStories.find(req.query)
+        .sort({ time: -1 })
+        .exec(function(err, topstories) {
+            if (err) next(err);
 
-        res.json(topstories);
-    });
+            res.json(topstories);
+        });
 })
-//Verify.verifyOrdinaryUser,
 .post(Verify.verifyOrdinaryUser, function(req, res, next) {
     TopStories.create(req.body, function(err, topstory) {
         if (err) next(err);

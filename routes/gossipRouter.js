@@ -10,6 +10,7 @@ gossipRouter.use(bodyParser.json());
 gossipRouter.route('/')
 .get(function(req, res, next) {
 	Gossips.find(req.query)
+	    .sort({ updatedAt: -1 })
 	    .populate('postedBy')
 	    .exec(function(err, gossips) {
 	   	    if (err) next(err);

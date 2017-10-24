@@ -2,8 +2,8 @@
 
 angular.module('ghettoSports')
 
-.constant("baseURL", "https://ghettosports.herokuapp.com/")
-//.constant("baseURL", "http://localhost:5000/")
+//.constant("baseURL", "https://ghettosports.herokuapp.com/")
+.constant("baseURL", "http://localhost:5000/")
 
 .factory('enquiriesFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
     return $resource(baseURL + "enquiries/:id", null, {
