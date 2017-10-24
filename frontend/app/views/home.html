@@ -42,7 +42,7 @@
                 </div>
                 <!-- Loading -->
                 <div ng-repeat="result in results" style="padding: 2px"> 
-                     <p style="font-size: 17px"><strong>{{result.caption}}</strong> {{result.gossip}}&nbsp;<strong><a style="color: black" href="{{result.link}}">({{result.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p><!-- target="_blank"-->
+                     <p style="font-size: 17px"><strong>{{result.caption}}</strong> {{result.gossip}}&nbsp;<strong><a style="color: black" href="{{result.link}}" target="_blank">({{result.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p><!-- target="_blank"-->
                 </div>
             </div>
         	<div class="col-xs-12" ng-if="!showSR">
@@ -51,7 +51,7 @@
                     <p style="font-size: 25px">Transfer news&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p>
                 </div>
                 <div ng-repeat="gossip in gossips" style="padding: 5px">
-        		    <p style="font-size: 17px"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p><!-- target="_blank"-->
+        		    <p style="font-size: 17px"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}" target="_blank">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p><!-- target="_blank"-->
                 </div>
                 <p style="padding: 10px"></p>
         	</div>
@@ -67,7 +67,7 @@
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageTop}}</a><br><br>
                 </div>
                 <div ng-repeat="tp in topstories" ng-if="showTop">
-                    <a href="{{tp.link}}" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{tp.title}}</a><br><p style="padding: 1px"></p>
+                    <a href="{{tp.link}}" target="_blank" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{tp.title}}</a><br><p style="padding: 1px"></p>
                     &nbsp;<span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{tp.TimeDifference}} h | {{tp.category}}
                     <p style="padding: 6px"></p>
                 </div>
@@ -81,7 +81,7 @@
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageGh}}</a><br><br>
                 </div>
                 <div ng-repeat="gh in ghstories" ng-if="showGh">
-                    <a href="{{gh.link}}" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{gh.title}}</a><br><p style="padding: 1px"></p>
+                    <a href="{{gh.link}}" target="_blank" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{gh.title}}</a><br><p style="padding: 1px"></p>
                     &nbsp;<span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{gh.TimeDifference}} h | {{gh.category}}
                     <p style="padding: 6px"></p>
                 </div>
