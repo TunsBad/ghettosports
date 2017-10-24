@@ -163,7 +163,7 @@ angular.module('ghettoSports')
     
     //Send Button ....
     $scope.send = function () {
-        enquiriesFactory.save($scope.feedback, function(response) {   
+        enquiriesFactory.save($scope.feedback, function(response) {
                 //success dialog box configuration.        
                 ngDialog.openConfirm({ template: 'views/enquirysuccess.html', className: 'ngdialog-theme-default', scope: $scope });             
                 //ensure that all opened dialog boxes are closed. 
