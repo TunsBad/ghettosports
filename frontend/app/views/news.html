@@ -18,7 +18,7 @@
                 <div class="col-xs-12" ng-if="!showFFT">
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageFFT}}</a>
                 </div>
-                <div class="col-xs-12" style="padding: 2px;" ng-if="showFFT" ng-repeat="fft in fourfourtwo.articles">
+                <div class="col-xs-12" style="padding: 5px;" ng-if="showFFT" ng-repeat="fft in fourfourtwo.articles">
                     <div><br><a style="color: black" href="{{fft.url}}" target="_blank"><p style="font-size: 18px; padding: 17px"><strong>{{fft.title}}:</strong>&nbsp;&nbsp;{{fft.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
                     <div><img class="col-xs-12" src="{{fft.urlToImage}}";/></div><hr>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="col-xs-12" ng-if="!showBBC">
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageBBC}}</a>
                 </div>
-                <div class="col-xs-12" style="padding: 2px" ng-if="showBBC" ng-repeat="bbc in bbcsport.articles">
+                <div class="col-xs-12" style="padding: 5px" ng-if="showBBC" ng-repeat="bbc in bbcsport.articles">
                     <div><br><a style="color: black" href="{{bbc.url}}" target="_blank"><p style="font-size: 18px; padding: 17px"><strong>{{bbc.title}}:</strong>&nbsp;&nbsp;{{bbc.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
                     <div><img class="col-xs-12" src="{{bbc.urlToImage}}";/></div>
                 </div>
@@ -40,7 +40,7 @@
                 <div class="col-xs-12" ng-if="!showSPB">
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageSPB}}</a>
                 </div>
-                <div class="col-xs-12" style="padding: 2px" ng-if="showSPB" ng-repeat="spb in thesportbible.articles">
+                <div class="col-xs-12" style="padding: 5px" ng-if="showSPB" ng-repeat="spb in thesportbible.articles">
                     <div><br><a style="color: black" href="{{spb.url}}" target="_blank"><p style="font-size: 18px; padding: 17px"><strong>{{spb.title}}:</strong>&nbsp;&nbsp;{{spb.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
                     <div><img class="col-xs-12" src="{{spb.urlToImage}}";/></div>
                 </div>
@@ -51,7 +51,7 @@
                 <div class="col-xs-12" ng-if="!showFIT">
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageFIT}}</a>
                 </div>
-                <div class="col-xs-12" style="padding: 2px" ng-if="showFIT" ng-repeat="fit in footballitalia.articles">
+                <div class="col-xs-12" style="padding: 5px" ng-if="showFIT" ng-repeat="fit in footballitalia.articles">
                     <div><br><a style="color: black" href="{{fit.url}}" target="_blank"><p style="font-size: 18px; padding: 17px"><strong>{{fit.title}}:</strong>&nbsp;&nbsp;{{fit.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
                     <div><img class="col-xs-12" src="{{fit.urlToImage}}";/></div>
                 </div>
