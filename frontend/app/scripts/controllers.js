@@ -75,6 +75,13 @@ angular.module('ghettoSports')
             }); //setting success callbacks ....
 	};
 
+    $scope.shareBtn = function() {
+        FB.ui({
+                method: 'share',
+                href: 'https://ghettosports.herokuapp.com/'
+        }, function(response) { });
+    };
+
 	setTimeout(function () {
         $scope.$emit('HomeController');
     }, 0); //$emit value on $scope
