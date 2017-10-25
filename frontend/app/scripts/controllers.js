@@ -158,7 +158,7 @@ angular.module('ghettoSports')
 }])
 .controller('ContactController', ['$scope', 'enquiriesFactory', 'ngDialog', function ($scope, enquiriesFactory, ngDialog) {
 
-    var mymap = L.map('mapid').setView([5.52, -0.48], 10);
+    var mymap = L.map('mapid', { scrollWheelZoom: false }).setView([5.52, -0.48], 10);
 
     var marker = L.marker([5.52, -0.48]).addTo(mymap);
 
