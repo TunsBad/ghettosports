@@ -144,6 +144,13 @@ angular.module('ghettoSports')
 
 	$scope.leaders = usersFactory.query();
 
+     $scope.shareBtn = function() {
+        FB.ui({
+                method: 'share',
+                href: 'https://ghettosports.herokuapp.com/'
+        }, function(response) { });
+    };
+
 	setTimeout(function () {
         $scope.$emit('AboutController');
     }, 0); //check the $emit value on $scope
