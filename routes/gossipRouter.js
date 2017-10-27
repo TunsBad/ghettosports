@@ -21,6 +21,7 @@ gossipRouter.route('/')
 	Gossips.create(req.body, function(err, gossip) {
         if (err) next(err);
         
+        gossip.postedBy = req.decoded._id;
         gossip.save(function(err, gossip) {
             console.log("Gossip added to Collection")
             var id = gossip._id;
