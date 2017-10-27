@@ -177,8 +177,8 @@ angular.module('ghettoSports')
     $scope.send = function () {
         enquiriesFactory.save($scope.feedback, function(response) {
                 //dialog box configuration.        
-                ngDialog.openConfirm({ t
-                    emplate: 'views/enquirysuccess.html', 
+                ngDialog.openConfirm({ 
+                    template: 'views/enquirysuccess.html', 
                     className: 'ngdialog-theme-default', 
                     scope: $scope 
                 });             
