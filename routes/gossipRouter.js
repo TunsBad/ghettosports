@@ -11,7 +11,6 @@ gossipRouter.route('/')
 .get(function(req, res, next) {
 	Gossips.find(req.query)
 	    .sort({ updatedAt: -1 })
-	    .populate('postedBy')
 	    .exec(function(err, gossips) {
 	   	    if (err) next(err);
 
@@ -22,7 +21,6 @@ gossipRouter.route('/')
 	Gossips.create(req.body, function(err, gossip) {
         if (err) next(err);
         
-        gossip.postedBy = req.decoded._id;
         gossip.save(function(err, gossip) {
             console.log("Gossip added to Collection")
             var id = gossip._id;
@@ -42,7 +40,6 @@ gossipRouter.route('/')
 gossipRouter.route('/:gossipId')
 .get(Verify.verifyOrdinaryUser, function(req, res, next) {
 	Gossips.findById(req.params.gossipId)
-	    .populate('postedBy')
 	    .exec(function(err, gossip) {
 	    	if (err) next(err);
 

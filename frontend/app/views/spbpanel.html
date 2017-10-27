@@ -77,3 +77,119 @@ Packed with top headlines, latest transfer news, league standings and fixtures i
 If you want to get all the latest news in Football, you are at the right place.
 
 Hope you enjoy our content and share with your friends on Facebook. Thank you !
+
+https://www.facebook.com/dialog/share?app_id=145634995501895&display=popup&href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https%3A%2F%2Fdevelopers.facebook.com%2Ftools%2Fexplorer
+
+FB.ui({
+  method: 'share',
+  mobile_iframe: true,
+  href: 'https://developers.facebook.com/docs/',
+}, function(response){});
+
+share iframe ...
+
+// A competition
+{
+  "_links": {
+        "self": {
+            "href": "http://api.football-data.org/v1/competitions/424"
+        }
+        "teams": {
+            "href": "http://api.football-data.org/v1/competitions/424/teams"
+        }
+        "fixtures": {
+            "href": "http://api.football-data.org/v1/competitions/424/fixtures"
+        }
+        "leagueTable": {
+            "href": "http://api.football-data.org/v1/competitions/424/leagueTable"
+        }
+    }
+    "id": 424
+    "caption": "European Championships France 2016"
+    "league": "EC"
+    "year": "2016"
+    "currentMatchday": 3
+    "numberOfMatchdays": 7
+    "numberOfTeams": 24
+    "numberOfGames": 38
+    "lastUpdated": "2016-06-22T04:34:39Z"
+}
+
+Fixture.json
+----
+{
+    "fixture": {
+        "_links": {
+            "self": {
+                "href": "http://api.football-data.org/v1/fixtures/149430"
+            }
+            "competition": {
+                "href": "http://api.football-data.org/v1/competitions/405"
+            }
+            "homeTeam": {
+                "href": "http://api.football-data.org/v1/teams/86"
+            }
+            "awayTeam": {
+                "href": "http://api.football-data.org/v1/teams/78"
+            }
+        }
+        "date": "2016-05-28T18:45:00Z"
+        "status": "FINISHED"
+        "matchday": 10
+        "homeTeamName": "Real Madrid CF"
+        "awayTeamName": "Club Atlético de Madrid"
+        "result": {
+            "goalsHomeTeam": 1
+            "goalsAwayTeam": 1
+            "halfTime": {
+                "goalsHomeTeam": 1
+                "goalsAwayTeam": 0
+            }
+            "extraTime": {
+                "goalsHomeTeam": 1
+                "goalsAwayTeam": 1
+            }
+            "penaltyShootout": {
+                "goalsHomeTeam": 5
+                "goalsAwayTeam": 3
+            }
+        }
+    }
+    "head2head": {
+        "count": 10
+        "timeFrameStart": "2013-09-28"
+        "timeFrameEnd": "2016-05-28"
+        "homeTeamWins": 1
+        "awayTeamWins": 4
+        "draws": 5
+        "lastHomeWinHomeTeam": {  }
+        "lastWinHomeTeam": {  }
+        "lastAwayWinAwayTeam": {  }
+        "lastWinAwayTeam": { }
+        "fixtures": [   ]
+    }
+}
+
+}
+
+<div class="col-xs-12 hidden-xs">
+                <h3>Our Team</h3>
+                <hr>
+                <div class="tab-content">
+                    <ul class="media-list tab-pane fade in active">
+                        <li class="media" ng-repeat="leader in leaders">
+                            <div class="media-left media-middle">
+                                <a href="#">
+                                    <img class="media-object img-thumbnail" src="{{leader.picture}}" alt="administrator" height="100px" width="120px">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <p style="font-size: 20px" class="media-heading"><span class="fa fa-facebook-official" aria-hidden="true"></span>&nbsp;&nbsp;<strong>{{leader.username}}</strong>&nbsp;&nbsp;<span class="label label-primary label-sm hidden-xs">{{leader.title}}</span></p><br>
+                                <p><strong>{{leader.description}}</strong></p>
+                                <button class="btn btn-xs btn-default pull-right" type="button"><i class="fa fa-heart"></i></button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div><p style="padding: 30px"></p></div>

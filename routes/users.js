@@ -9,7 +9,7 @@ var router = express.Router();
 router.use(bodyParser.json());
 
 // GET all users listing.
-router.get('/', function(req, res, next) {
+router.get('/', Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
   User.find({}, function(err, user) {
     if (err) throw err;
         res.json(user);

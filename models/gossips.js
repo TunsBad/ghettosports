@@ -2,10 +2,6 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var gossipSchema = new Schema({
-	postedBy: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'User'
-	},
 	category: { 
 		type: String,
 		default: "Football" 

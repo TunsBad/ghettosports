@@ -6,7 +6,7 @@ angular.module('ghettoSports', ['ui.router','ngResource','ngDialog'])
         $stateProvider        
             // route for the home page
             .state('app', {
-                url:'/',
+                url: '/',
                 views: {
                     'header': {
                         templateUrl : 'views/header.html'
@@ -22,7 +22,7 @@ angular.module('ghettoSports', ['ui.router','ngResource','ngDialog'])
             })
 
             .state('app.news', {
-                url:'news',
+                url: 'news',
                 views: {
                     'content@': {
                         templateUrl : 'views/news.html',
@@ -32,7 +32,7 @@ angular.module('ghettoSports', ['ui.router','ngResource','ngDialog'])
             })
 
             .state('app.about', {
-                url:'about',
+                url: 'about',
                 views: {
                     'content@': {
                         templateUrl : 'views/about.html',
@@ -42,7 +42,7 @@ angular.module('ghettoSports', ['ui.router','ngResource','ngDialog'])
             })
 
             .state('app.contact', {
-                url:'contact',
+                url: 'contact',
                 views: {           
                     'content@': {
                         templateUrl : 'views/contact.html',
@@ -52,7 +52,7 @@ angular.module('ghettoSports', ['ui.router','ngResource','ngDialog'])
             })
 
             .state('app.administrator', {
-                url:'administrator',
+                url: 'administrator',
                 views: { 
                     'header@': {
                         templateUrl : 'views/adminheader.html',

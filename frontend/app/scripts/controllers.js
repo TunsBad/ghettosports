@@ -140,9 +140,7 @@ angular.module('ghettoSports')
     }, 0); //check the $emit value on $scope
     
 }])
-.controller('AboutController', ['$scope', 'usersFactory', function ($scope, usersFactory) {
-
-	$scope.leaders = usersFactory.query();
+.controller('AboutController', ['$scope', function ($scope) {
 
      $scope.shareBtn = function() {
         FB.ui({
@@ -178,26 +176,31 @@ angular.module('ghettoSports')
     //Send Button ....
     $scope.send = function () {
         enquiriesFactory.save($scope.feedback, function(response) {
-                //success dialog box configuration.        
-                ngDialog.openConfirm({ template: 'views/enquirysuccess.html', className: 'ngdialog-theme-default', scope: $scope });             
+                //dialog box configuration.        
+                ngDialog.openConfirm({ t
+                    emplate: 'views/enquirysuccess.html', 
+                    className: 'ngdialog-theme-default', 
+                    scope: $scope 
+                });             
                 //ensure that all opened dialog boxes are closed. 
                 ngDialog.close(); 
-                //setting values back to defaults.
+                //set values back to defaults.
                 $scope.feedback = { name: "", phone: "", subject: "", comment: "", email: "" };
-                //clean feedbackForm.
                 $scope.feedbackForm.$setPristine();
             }, 
             function(error) {
-                //log error to console.
+
                 console.log("Error: " + error.status + " " + error.statusText);
-                ////failure dialog box config.
-        	    ngDialog.open({ template: 'views/enquiryfailed.html', className: 'ngdialog-theme-default', scope: $scope }); 
+                //dialog box config.
+        	    ngDialog.open({ 
+                    template: 'views/enquiryfailed.html', 
+                    className: 'ngdialog-theme-default', 
+                    scope: $scope 
+                }); 
                 //close dialog box after 4 seconds.
-                setTimeout(
-                    function() { 
-                        ngDialog.close(); 
-                    }, 4000
-                );
+                setTimeout(function () { 
+                    ngDialog.close() 
+                }, 4000);
             }
         );
     };
