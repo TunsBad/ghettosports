@@ -14,7 +14,11 @@ var ghSchema = new Schema({
 		type: String,
 		default: 'Football'
 	},
-	time: Date
+	time: Date,
+	imageUrl: {
+		type: String,
+        required: true
+	}
 });
 
 //Virtual

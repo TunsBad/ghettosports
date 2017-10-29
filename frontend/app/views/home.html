@@ -7,88 +7,97 @@
         </div>
     </div>
 	<div class="row row-content">
-		<div class="col-xs-12 col-sm-12 col-md-8" ng-if="!showGossips">
+		<div class="col-xs-12 col-sm-12 col-md-7" ng-if="!showGossips">
             <h3>{{message}}</h3>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-8" ng-if="showGossips">
+        <div class="col-xs-12 col-sm-12 col-md-7" ng-if="showGossips">
         	<div class="col-xs-12">
 
-        		<h1 ng-if="!showHline">Transfer gossip: {{messageHline}}</h1>
-                <h1 ng-if="showHline">Transfer gossip: {{currentHeadline.header}}</h1>
+        		<h1 ng-if="!showHline">Transfer news: {{messageHline}}</h1>
+                <h1 ng-if="showHline">Transfer news: {{currentHeadline.header}}</h1>
 
-        		<!-- {{Rose, Sanchez, Lemar, Messi, Moyes, Sagna - from server here}}-->
         		<p style="padding: 7px"></p>
         		<div class="col-xs-12 col-sm-6">
         			<p style="font-size: 15px"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{HeadlineTimeDiffHrs}} hours ago | Football</p>
-        			<!-- {{6 hours ago - from server}}-->
         		</div>
         		<div class="col-sm-2 col-sm-offset-4 hidden-xs">
-                    <div ng-click="shareBtn()" class="btn btn-success clearfix"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;Share</div>
+                    <button ng-click="shareBtn()" class="btn btn-success clearfix"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;Share</button>
         		</div>
         		<br><hr class="hidden-xs">
         	</div>
         	<div class="col-xs-12">
-        	    <img class="col-xs-12" align="center" src="images/gossips2.jpg"; style="height: 190px; display: block;">
+        	    <img class="col-xs-12" align="center" src="images/gossips2.jpg"; style="display: block;">
         	</div>
         	<div class="col-xs-12">
         		<p style="padding: 9px"></p>
-        		<input type="text" id="searchbar" ng-change="update(searchText.querystring)" ng-model="searchText.querystring" class="search-bar-input" placeholder=" Search gossip by team or player name ..." />
+        		<input type="text" id="searchbar" ng-change="update(searchText.querystring)" ng-model="searchText.querystring" class="search-bar-input" placeholder=" Search gossip by team name ..." />
                 <p style="padding: 1px"></p>
         	</div>
             <div class="col-xs-12" ng-if="showSR">
                 <div style="padding: 2px">
-                    <p style="font-size: 25px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Search results for "{{searchText.querystring}}"&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p><br>
+                    <p style="font-size: 25px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Search results for "{{searchText.querystring}}"&nbsp;&nbsp;&nbsp;</p>
                 </div>
                 <!-- Loading -->
-                <div ng-repeat="result in results" style="padding: 2px"> 
-                     <p style="font-size: 17px"><strong>{{result.caption}}</strong> {{result.gossip}}&nbsp;<strong><a style="color: black" href="{{result.link}}" target="_blank">({{result.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p><!-- target="_blank"-->
+                <div ng-repeat="result in results" class="col-xs-12"> 
+                    <div style="padding: 9px"><p style="font-size: 17px"><strong>{{result.caption}}</strong> {{result.gossip}}&nbsp;<strong><a style="color: black" href="{{result.link}}" target="_blank">({{result.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
+                    <div><img src="{{result.imageUrl}}" class="col-xs-12" /></div>
                 </div>
             </div>
         	<div class="col-xs-12" ng-if="!showSR">
         		<p style="padding: 2px"></p>
                 <div style="padding: 2px">
-                    <p style="font-size: 25px">Transfer news&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p>
+                    <p style="font-size: 25px">Updated At ({{currentHeadline.time}} GMT)&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p>
                 </div>
-                <div ng-repeat="gossip in gossips" style="padding: 5px">
-        		    <p style="font-size: 17px"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}" target="_blank">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p><!-- target="_blank"-->
+                <div ng-repeat="gossip in gossips" class="col-xs-12">
+        		    <div style="padding: 9px"><p style="font-size: 17px"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}" target="_blank">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
+                    <div><img src="{{gossip.imageUrl}}" class="col-xs-12" /></div>
                 </div>
-                <p style="padding: 10px"></p>
+                <div class="col-sm-2 col-sm-offset-10">
+                    <button ng-click="shareBtn()" class="btn btn-success clearfix"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;Share</button>
+                </div>
+                <div class="col-xs-12"><p style="padding: 10px"></p></div>
         	</div>
         </div>
 
-        <div class="hidden-xs hidden-sm col-md-4">
-            <div class="col-md-11 col-md-offset-1"><p style="padding: 25px"></p></div>
-            <div class="col-md-11 col-md-offset-1" style="border-left: 1px solid #666666; border-right: 1px solid #666666; border-top: 1px solid #666666; border-bottom: 1px solid #666666;">
+        <div class="hidden-xs hidden-sm col-md-5">
+            <div class="col-md-12"><p style="padding: 10px"></p></div>
+            <div class="col-md-12">
+                <h3 ng-if="showTop"><i class="fa fa-eercast" aria-hidden="true"></i>&nbsp;&nbsp;Trending Stories</h3>
                 <p style="padding: 5px"></p>
-                <p style="font-size: 21px; padding: 1px"><span class="glyphicon glyphicon-fire" style="color: red" aria-hidden="true"></span>&nbsp;&nbsp;<span class="label label-danger">&nbsp;Hot&nbsp;</span>&nbsp;&nbsp;News</p><hr>
-                <p style="padding: 1px"></p>
                 <div ng-if="!showTop">
-                    <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageTop}}</a><br><br>
+                    <a style="max-width: 90%; font-size: 18px; font-weight: bold; color: black">{{messageTop}}</a><br><br>
                 </div>
-                <div ng-repeat="tp in topstories" ng-if="showTop">
-                    <a href="{{tp.link}}" target="_blank" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{tp.title}}</a><br><p style="padding: 1px"></p>
-                    &nbsp;<span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{tp.TimeDifference}} h | {{tp.category}}
-                    <p style="padding: 6px"></p>
+                <div ng-repeat="tp in topstories" ng-if="showTop" class="col-md-12" style="border-left: 1px solid #e8e5e5;">
+                    <a href="{{tp.link}}" target="_blank" style="color: black">
+                        <img class="col-md-5" src="{{tp.imageUrl}}" height="65px" />
+                        <div class="col-md-7">
+                            <p style="font-size: 17px; font-weight: bold;">{{tp.title}}</p>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{tp.TimeDifference}} h | {{tp.category}}
+                            <p style="padding: 4px"></p>
+                        </div>
+                    </a>
                 </div>
-                <p style="padding: 7px"></p>
             </div>
-            <div class="col-md-11 col-md-offset-1"><p style="padding: 10px"></p></div>
-            <div class="col-md-11 col-md-offset-1" style="border-left: 1px solid #666666; border-right: 1px solid #666666; border-top: 1px solid #666666; border-bottom: 1px solid #666666;"><br>
-                <p style="font-size: 21px; padding: 1px"><span class="glyphicon glyphicon-bookmark" style="color: green" aria-hidden="true"></span>&nbsp;&nbsp;Ghana News</p><hr>
-                <p style="padding: 1px"></p>
+            <div class="col-md-12"><p style="padding: 30px"></p></div>
+            <div class="col-md-12">
+                <h3 ng-if="showGh"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;Ghana News</h3>
+                <p style="padding: 5px"></p>
                 <div ng-if="!showGh">
-                    <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageGh}}</a><br><br>
+                    <a style="max-width: 90%; font-size: 18px; font-weight: bold; color: black">{{messageGh}}</a><br><br>
                 </div>
-                <div ng-repeat="gh in ghstories" ng-if="showGh">
-                    <a href="{{gh.link}}" target="_blank" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{gh.title}}</a><br><p style="padding: 1px"></p>
-                    &nbsp;<span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{gh.TimeDifference}} h | {{gh.category}}
-                    <p style="padding: 6px"></p>
+                <div ng-repeat="gh in ghstories" ng-if="showGh" class="col-md-12" style="border-left: 1px solid #e8e5e5">
+                    <a href="{{gh.link}}" target="_blank" style="color: black">
+                        <div class="col-md-7">
+                            <p style="font-size: 17px; font-weight: bold;">{{gh.title}}</p>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{gh.TimeDifference}} h | {{gh.category}}
+                            <p style="padding: 4px"></p>
+                        </div>
+                        <img class="col-md-5" src="{{gh.imageUrl}}" height="65px" />
+                    </a>
                 </div>
-                <p style="padding: 7px"></p>
             </div>
-            <div class="col-md-11 col-md-offset-1"><p style="padding: 20px"></p></div>
+            <div class="col-md-12"><p style="padding: 10px"></p></div>
         </div>  
-
 	</div>
 </div>

@@ -3,62 +3,62 @@
         <div class="col-xs-12">
             <ul class="breadcrumb">
             	<li><a ui-sref="app">Home</a></li>
-                <li><a ui-sref="app.news" class="active">News & Fixtures</a></li>
+                <li><a ui-sref="app.news" class="active">Headlines & Fixtures</a></li>
             </ul>
         </div>
     </div>
 	<div class="row row-content">
-        <div class="col-xs-12 col-sm-12 col-md-8">
+        <div class="col-xs-12 col-sm-12 col-md-7">
             <div class="col-xs-12">
-                <h2 align="center"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;TOP HEADLINES</h2>
+                <h3 align="center"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;TOP HEADLINES (FourFourTwo, BBC Sport, SportsBible & Football-Italia)</h3>
             </div>
-            <div class="col-xs-12">   
-                <h3><img align="center" src="images/fft.png"; style="height: 60px; width: 60px; display: inline;">&nbsp;&nbsp;{{fourfourtwo.source}}</h3>
+            <div class="col-xs-12"><br> 
+                <h3><img align="center" src="images/fft.png"; style="height: 50px; width: 55px; display: inline;">&nbsp;&nbsp;{{fourfourtwo.source}}</h3>
                 <hr>                
                 <div class="col-xs-12" ng-if="!showFFT">
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageFFT}}</a>
                 </div>
                 <div class="col-xs-12" style="padding: 5px;" ng-if="showFFT" ng-repeat="fft in fourfourtwo.articles">
-                    <div><br><a style="color: black" href="{{fft.url}}" target="_blank"><p style="font-size: 18px; padding: 15px"><strong>{{fft.title}}:</strong>&nbsp;&nbsp;{{fft.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
-                    <div><img class="col-xs-12" align="center" src="{{fft.urlToImage}}";/></div><hr>
+                    <div><br><a style="color: black" href="{{fft.url}}" target="_blank"><p style="font-size: 17px; padding: 12px"><strong>{{fft.title}}:</strong>&nbsp;&nbsp;{{fft.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
+                    <div><img class="col-xs-12" align="center" src="{{fft.urlToImage}}";/></div>
                 </div>
             </div>
             <div class="col-xs-12"><br><br><br>
-                <h3><img align="center" src="images/bbc.png"; style="height: 60px; width: 60px; display: inline;">&nbsp;&nbsp;{{bbcsport.source}}</h3>
+                <h3><img align="center" src="images/bbc.png"; style="height: 50px; width: 55px; display: inline;">&nbsp;&nbsp;{{bbcsport.source}}</h3>
                 <hr>        
                 <div class="col-xs-12" ng-if="!showBBC">
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageBBC}}</a>
                 </div>
                 <div class="col-xs-12" style="padding: 5px" ng-if="showBBC" ng-repeat="bbc in bbcsport.articles">
-                    <div><br><a style="color: black" href="{{bbc.url}}" target="_blank"><p style="font-size: 18px; padding: 15px"><strong>{{bbc.title}}:</strong>&nbsp;&nbsp;{{bbc.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
-                    <div><img class="col-xs-12" src="{{bbc.urlToImage}}";/></div>
+                    <div><br><a style="color: black" href="{{bbc.url}}" target="_blank"><p style="font-size: 17px; padding: 12px"><strong>{{bbc.title}}:</strong>&nbsp;&nbsp;{{bbc.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
+                    <div><img class="col-xs-12" align="center" src="{{bbc.urlToImage}}";/></div>
                 </div>
             </div>
             <div class="col-xs-12"><br><br><br>
-                <h3><img align="center" src="images/sb.png"; style="height: 60px; width: 60px; display: inline;">&nbsp;&nbsp;{{thesportbible.source}}</h3>
+                <h3><img align="center" src="images/sb.png"; style="height: 50px; width: 55px; display: inline;">&nbsp;&nbsp;{{thesportbible.source}}</h3>
                 <hr>       
                 <div class="col-xs-12" ng-if="!showSPB">
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageSPB}}</a>
                 </div>
                 <div class="col-xs-12" style="padding: 5px" ng-if="showSPB" ng-repeat="spb in thesportbible.articles">
-                    <div><br><a style="color: black" href="{{spb.url}}" target="_blank"><p style="font-size: 18px; padding: 15px"><strong>{{spb.title}}:</strong>&nbsp;&nbsp;{{spb.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
-                    <div><img class="col-xs-12" src="{{spb.urlToImage}}";/></div>
+                    <div><br><a style="color: black" href="{{spb.url}}" target="_blank"><p style="font-size: 17px; padding: 12px"><strong>{{spb.title}}:</strong>&nbsp;&nbsp;{{spb.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
+                    <div><img class="col-xs-12" align="center" src="{{spb.urlToImage}}";/></div>
                 </div>
             </div>
             <div class="col-xs-12"><br><br><br>
-                <h3><img align="center" src="images/fit.png"; style="height: 60px; width: 60px; display: inline;">&nbsp;&nbsp;{{footballitalia.source}}</h3>
+                <h3><img align="center" src="images/fit.png"; style="height: 50px; width: 55px; display: inline;">&nbsp;&nbsp;{{footballitalia.source}}</h3>
                 <hr>        
                 <div class="col-xs-12" ng-if="!showFIT">
                     <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageFIT}}</a>
                 </div>
                 <div class="col-xs-12" style="padding: 5px" ng-if="showFIT" ng-repeat="fit in footballitalia.articles">
-                    <div><br><a style="color: black" href="{{fit.url}}" target="_blank"><p style="font-size: 18px; padding: 15px"><strong>{{fit.title}}:</strong>&nbsp;&nbsp;{{fit.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
-                    <div><img class="col-xs-12" src="{{fit.urlToImage}}";/></div>
+                    <div><br><a style="color: black" href="{{fit.url}}" target="_blank"><p style="font-size: 17px; padding: 12px"><strong>{{fit.title}}:</strong>&nbsp;&nbsp;{{fit.description}}&nbsp;<i class="fa fa-external-link" aria-hidden="true"></i></p></a></div>
+                    <div><img class="col-xs-12" align="center" src="{{fit.urlToImage}}";/></div>
                 </div>
             </div>
         </div>
 
-        <div class="hidden-xs hidden-sm col-md-4">
+        <div class="hidden-xs hidden-sm col-md-5">
             
         </div>
 	</div>

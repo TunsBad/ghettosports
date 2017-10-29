@@ -54,6 +54,21 @@
 </body>
 </html>
 
+<div class="col-md-11 col-md-offset-1" style="border-left: 1px solid #666666; border-right: 1px solid #666666; border-top: 1px solid #666666; border-bottom: 1px solid #666666;"><br>
+                <p style="font-size: 21px; padding: 1px"><span class="glyphicon glyphicon-bookmark" style="color: green" aria-hidden="true"></span>&nbsp;&nbsp;Ghana News</p><hr>
+                <p style="padding: 1px"></p>
+                <div ng-if="!showGh">
+                    <a style="max-width: 80%; font-size: 15px; font-weight: bold; color: black">{{messageGh}}</a><br><br>
+                </div>
+                <div ng-repeat="gh in ghstories" ng-if="showGh">
+                    <a href="{{gh.link}}" target="_blank" style="max-width: 90%; font-size: 16px; font-weight: bold; color: black">{{gh.title}}</a><br>
+                    <p style="padding: 1px"></p>
+                    &nbsp;<span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{gh.TimeDifference}} h | {{gh.category}}
+                    <p style="padding: 6px"></p>
+                </div>
+                <p style="padding: 7px"></p>
+            </div>
+
 <!-- http://ichef.bbci.co.uk/onesport/cps/624/cpsprodpb/17B9A/production/_92387179_gossip_promo.jpg -->
 
 <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fghettosports.herokuapp.com&layout=button_count&size=large&mobile_iframe=true&appId=465641287153087&width=84&height=28" width="84" height="28" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>

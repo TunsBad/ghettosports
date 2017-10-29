@@ -22,7 +22,8 @@ var gossipSchema = new Schema({
 	gossip: { 
 		type: String,
         unique: true
-	}
+	},
+	imageUrl: String
 }, { 
 	timestamps: true 
 });
