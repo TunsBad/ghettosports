@@ -14,7 +14,7 @@ headerRouter.route('/')
         res.json(headerlines);
     });
 })
-.post(Verify.verifyOrdinaryUser, Verify.verifyAdmin, function(req, res, next) {
+.post(Verify.verifyOrdinaryUser, function(req, res, next) {
 	Headlines.create(req.body, function(err, headline) {
         if (err) next(err);
         

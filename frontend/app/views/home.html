@@ -41,7 +41,7 @@
                 <!-- Loading -->
                 <div ng-repeat="result in results" class="col-xs-12"> 
                     <div style="padding: 9px"><p style="font-size: 17px"><strong>{{result.caption}}</strong> {{result.gossip}}&nbsp;<strong><a style="color: black" href="{{result.link}}" target="_blank">({{result.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
-                    <div><img src="{{result.imageUrl}}" class="col-xs-12" /></div>
+                    <div><a target="_blank" href="{{result.link}}"><img src="{{result.imageUrl}}" class="col-xs-12" /></a></div>
                 </div>
             </div>
         	<div class="col-xs-12" ng-if="!showSR">
