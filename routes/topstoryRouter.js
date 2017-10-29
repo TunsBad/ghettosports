@@ -10,7 +10,7 @@ topstoryRouter.route('/')
 .get(function(req, res, next) {
     TopStories.find(req.query)
         .sort({ time: -1 })
-        .limit(10)
+        .limit(8)
         .exec(function(err, topstories) {
             if (err) next(err);
 
