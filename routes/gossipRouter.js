@@ -11,6 +11,7 @@ gossipRouter.route('/')
 .get(function(req, res, next) {
 	Gossips.find(req.query)
 	    .sort({ updatedAt: -1 })
+	    .limit(10)
 	    .exec(function(err, gossips) {
 	   	    if (err) next(err);
 
