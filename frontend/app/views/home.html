@@ -51,7 +51,7 @@
                 </div>
                 <div ng-repeat="gossip in gossips" class="col-xs-12">
         		    <div style="padding: 9px"><p style="font-size: 17px"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}" target="_blank">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
-                    <div><img src="{{gossip.imageUrl}}" class="col-xs-12" /></div>
+                    <div><a target="_blank" href="{{gossip.link}}"><img src="{{gossip.imageUrl}}" class="col-xs-12" /></a></div>
                 </div>
                 <div class="col-sm-2 col-sm-offset-10">
                     <button ng-click="shareBtn()" class="btn btn-success clearfix"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;Share</button>
@@ -79,7 +79,7 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-12"><p style="padding: 30px"></p></div>
+            <div class="col-md-12"><p style="padding: 40px"></p></div>
             <div class="col-md-12">
                 <h3 ng-if="showGh"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;Ghana News</h3>
                 <p style="padding: 5px"></p>
