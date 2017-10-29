@@ -10,7 +10,7 @@ ghstoryRouter.route('/')
 .get(function(req, res, next) {
     GhStories.find(req.query)
         .sort({ time: -1 })
-        .limit(10)
+        .limit(8)
         .exec(function(err, ghstories) {
             if (err) next(err);
 

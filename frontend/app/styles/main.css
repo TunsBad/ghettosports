@@ -81,18 +81,20 @@ body {
 }
 
 .banner {
-  background-image: url(../images/bundesliga.jpg);
+  background-image: url(../images/banner.jpg);
   background-repeat: no-repeat;
   color: floralwhite;
   background-size: cover;
-  height: 500px;
+  height: 250px;
 }
+
 .epl {
   background-image: url(../images/epl2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   height: 250px;
 }
+
 .laliga {
   background-image: url(../images/la-liga.png);
   background-repeat: no-repeat;
@@ -109,7 +111,7 @@ body {
   margin: 0px auto;
   padding: 5px 0px;
   border-bottom: 0px ridge;
-  min-height: 500px;
+  min-height: 700px;
 }
 
 .row-footer {
