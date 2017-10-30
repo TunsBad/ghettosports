@@ -47,7 +47,7 @@
         	<div class="col-xs-12" ng-if="!showSR">
         		<p style="padding: 2px"></p>
                 <div style="padding: 2px">
-                    <p style="font-size: 20px">Updated At (2 : 00 PM GMT)&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p>
+                    <p style="font-size: 20px">Updated At ( 2:00 PM GMT )&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p>
                 </div>
                 <div ng-repeat="gossip in gossips" class="col-xs-12">
         		    <div style="padding: 9px"><p style="font-size: 17px"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}" target="_blank">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
@@ -61,18 +61,18 @@
         	</div>
         </div>
 
-        <div class="hidden-xs hidden-sm col-md-5">
-            <div class="col-md-12"><p style="padding: 10px"></p></div>
-            <div class="col-md-12">
+        <div class="col-xs-12 col-sm-12 col-md-5">
+            <div class="col-xs-12"><p style="padding: 10px"></p></div>
+            <div class="col-xs-12">
                 <h4 ng-if="showTop"><i class="fa fa-eercast" aria-hidden="true"></i>&nbsp;&nbsp;Trending Stories</h4>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showTop">
                     <a style="max-width: 90%; font-size: 15px; font-weight: bold; color: black">{{messageTop}}</a><br><br>
                 </div>
-                <div ng-repeat="tp in topstories" ng-if="showTop" class="col-md-12" style="border-left: 1px solid #e8e5e5;">
+                <div ng-repeat="tp in topstories" ng-if="showTop" class="col-xs-12" style="border-left: 1px solid #e8e5e5;">
                     <a href="{{tp.link}}" target="_blank" style="color: black">
-                        <img class="col-md-5" src="{{tp.imageUrl}}" height="65px" />
-                        <div class="col-md-7">
+                        <img class="col-xs-5" src="{{tp.imageUrl}}" height="65px" />
+                        <div class="col-xs-7">
                             <p style="font-size: 15px; font-weight: bold;">{{tp.title}}</p>
                             <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{tp.TimeDifference}} h | {{tp.category}}
                             <p style="padding: 4px"></p>
@@ -80,25 +80,25 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-12"><p style="padding: 40px"></p></div>
-            <div class="col-md-12">
+            <div class="col-xs-12"><p style="padding: 40px"></p></div>
+            <div class="col-xs-12">
                 <h4 ng-if="showGh"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;Ghana News</h4>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showGh">
                     <a style="max-width: 90%; font-size: 15px; font-weight: bold; color: black">{{messageGh}}</a><br><br>
                 </div>
-                <div ng-repeat="gh in ghstories" ng-if="showGh" class="col-md-12" style="border-left: 1px solid #e8e5e5">
+                <div ng-repeat="gh in ghstories" ng-if="showGh" class="col-xs-12" style="border-left: 1px solid #e8e5e5">
                     <a href="{{gh.link}}" target="_blank" style="color: black">
-                        <div class="col-md-7">
+                        <div class="col-xs-7">
                             <p style="font-size: 15px; font-weight: bold;">{{gh.title}}</p>
                             <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{gh.TimeDifference}} h | {{gh.category}}
                             <p style="padding: 4px"></p>
                         </div>
-                        <img class="col-md-5" src="{{gh.imageUrl}}" height="65px" />
+                        <img class="col-xs-5" src="{{gh.imageUrl}}" height="65px" />
                     </a>
                 </div>
             </div>
-            <div class="col-md-12"><p style="padding: 30px"></p></div>
+            <div class="col-xs-12"><p style="padding: 30px"></p></div>
         </div>  
 	</div>
 </div>
