@@ -29,6 +29,7 @@ var enquiryRouter = require('./routes/enquiryRouter');
 var topstoryRouter = require('./routes/topstoryRouter');
 var ghstoryRouter = require('./routes/ghstoryRouter');
 var headlineRouter = require('./routes/headlineRouter');
+var webstoryRouter = require('./routes/webstoryRouter');
 
 var app = express();
 
@@ -58,6 +59,7 @@ app.use('/enquiries', enquiryRouter);
 app.use('/topstories', topstoryRouter);
 app.use('/ghstories', ghstoryRouter);
 app.use('/headlines', headlineRouter);
+app.use('/webstories', webstoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

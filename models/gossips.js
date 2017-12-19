@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+//gossips schema
 var gossipSchema = new Schema({
 	postedBy: {
         type: mongoose.Schema.Types.ObjectId,
@@ -21,6 +22,7 @@ var gossipSchema = new Schema({
 	},
 	gossip: { 
 		type: String,
+		required: true,
         unique: true
 	},
 	imageUrl: String
@@ -28,6 +30,7 @@ var gossipSchema = new Schema({
 	timestamps: true 
 });
 
+// you can only have one full text searchable field per collection
 gossipSchema.index({ caption: 'text' });
 
 var Gossips = mongoose.model("Gossip", gossipSchema);

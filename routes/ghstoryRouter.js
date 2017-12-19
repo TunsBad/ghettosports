@@ -23,7 +23,7 @@ ghstoryRouter.route('/')
         
         ghstory.time = Date.now();
         ghstory.save(function(err, ghstory) {
-            console.log('Ghana sports story sdded!');
+            console.log('Ghana sports story added!');
             var id = ghstory._id;
             res.writeHead(200, {'Content-Type': 'text/plain'});
             res.end('Added Ghana sports story with id: ' + id);

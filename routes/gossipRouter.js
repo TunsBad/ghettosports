@@ -69,7 +69,7 @@ gossipRouter.route('/search/:query')
 		{ $text : { $search : req.params.query } },
 		{ score : { $meta: 'textScore' } })
 	        .sort({ score: { $meta : 'textScore' } })
-	        .limit(30)
+	        .limit(20)
 	        .exec(function(err, gossips) {
 	        	if (err) next(err);
 

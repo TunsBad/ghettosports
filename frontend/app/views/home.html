@@ -19,7 +19,8 @@
 
         		<p style="padding: 7px"></p>
         		<div class="col-xs-12 col-sm-6">
-        			<p style="font-size: 15px"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{HeadlineTimeDiffHrs}} hours ago | Football</p>
+        			<p style="font-size: 16px; font-family: Maven Pro;" ng-if="HeadlineTimeDiffHrs"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b>{{HeadlineTimeDiffHrs}} hours ago | Football</b></p>
+                    <p style="font-size: 16px; font-family: Maven Pro;" ng-if="!HeadlineTimeDiffHrs"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b>{{HeadlineTimeDiffMins}} minutes ago | Football</b></p>
         		</div>
         		<div class="col-sm-2 col-sm-offset-4 hidden-xs">
                     <button ng-click="shareBtn()" class="btn btn-success clearfix"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;Share</button>
@@ -35,70 +36,88 @@
                 <p style="padding: 1px"></p>
         	</div>
             <div class="col-xs-12" ng-if="showSR">
-                <div style="padding: 2px">
-                    <p style="font-size: 20px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Search results for "{{searchText.querystring}}"&nbsp;&nbsp;&nbsp;</p>
+                <div style="padding: 3px">
+                    <b><p style="font-size: 20px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp; Search results for "{{searchText.querystring}}"&nbsp;&nbsp;&nbsp;</p></b>
                 </div>
                 <!-- Loading -->
                 <div ng-repeat="result in results" class="col-xs-12"> 
-                    <div style="padding: 9px"><p style="font-size: 17px"><strong>{{result.caption}}</strong> {{result.gossip}}&nbsp;<strong><a style="color: black" href="{{result.link}}" target="_blank">({{result.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
+                    <div style="padding: 9px"><p style="font-size: 17px; font-family: Maven Pro;"><strong>{{result.caption}}</strong> {{result.gossip}}&nbsp;<strong><a style="color: black" href="{{result.link}}" target="_blank">({{result.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
                     <div><a target="_blank" href="{{result.link}}"><img src="{{result.imageUrl}}" class="col-xs-12" /></a></div>
                 </div>
             </div>
         	<div class="col-xs-12" ng-if="!showSR">
         		<p style="padding: 2px"></p>
                 <div style="padding: 2px">
-                    <p style="font-size: 20px">Updated At ( 2:00 PM GMT )&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p>
+                    <b><p style="font-size: 20px">Updated At ( 2:00 PM GMT )&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p></b>
                 </div>
                 <div ng-repeat="gossip in gossips" class="col-xs-12">
-        		    <div style="padding: 9px"><p style="font-size: 17px"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}" target="_blank">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
+        		    <div style="padding: 9px"><p style="font-size: 17px; font-family: Maven Pro;"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}" target="_blank">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
                     <div><a target="_blank" href="{{gossip.link}}"><img src="{{gossip.imageUrl}}" class="col-xs-12" /></a></div>
                 </div>
-                <div class="col-xs-12"><p style="padding: 2px"></p></div>
-                <div class="col-sm-2 col-sm-offset-10">
-                    <button ng-click="shareBtn()" class="btn btn-success clearfix"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;Share</button>
-                </div>
-                <div class="col-xs-12"><p style="padding: 1px"></p><hr></div>
         	</div>
         </div>
 
-        <div class="col-xs-12 col-sm-12 col-md-5">
-            <div class="col-xs-12"><p style="padding: 10px"></p></div>
+        <div class="col-xs-12 col-sm-12 col-md-5 hidden-xs">
+            <div class="col-xs-12"><p style="padding: 12px"></p></div>
             <div class="col-xs-12">
-                <h4 ng-if="showTop"><i class="fa fa-eercast" aria-hidden="true"></i>&nbsp;&nbsp;Trending Stories</h4>
+                <h3 ng-if="showTop" style="font-family: Maven Pro;"><i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Trending Stories</strong></h3>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showTop">
                     <a style="max-width: 90%; font-size: 15px; font-weight: bold; color: black">{{messageTop}}</a><br><br>
                 </div>
-                <div ng-repeat="tp in topstories" ng-if="showTop" class="col-xs-12" style="border-left: 1px solid #e8e5e5;">
-                    <a href="{{tp.link}}" target="_blank" style="color: black">
-                        <img class="col-xs-5" src="{{tp.imageUrl}}" height="65px" />
+                <div ng-repeat="tp in topstories" ng-if="showTop" class="col-xs-12" style="border-left: 1px solid #e8e5e5; padding: 3px">
                         <div class="col-xs-7">
-                            <p style="font-size: 15px; font-weight: bold;">{{tp.title}}</p>
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{tp.TimeDifference}} h | {{tp.category}}
-                            <p style="padding: 4px"></p>
+                            <p style="font-size: 16px; font-weight: bold; font-family: Maven Pro;"><a href="{{tp.link}}" target="_blank" style="color: black">{{tp.title}}</a></p>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b ng-if="tp.TimeDifference" style="font-family: Maven Pro;">{{tp.TimeDifference}} h | {{tp.category}}</b> <b ng-if="!tp.TimeDifference" style="font-family: Maven Pro;">{{tp.TimeDiffMins}} m | {{tp.category}}</b>
+                            <p style="padding: 5px"></p>
                         </div>
-                    </a>
+                        <div class="col-xs-5">
+                            <a href="{{tp.link}}" target="_blank"><img src="{{tp.imageUrl}}" style="height: 65px; width: 120px"/></a>
+                        </div>
                 </div>
             </div>
-            <div class="col-xs-12"><p style="padding: 40px"></p></div>
+            <div class="col-xs-12"><p style="padding: 30px"></p></div>
             <div class="col-xs-12">
-                <h4 ng-if="showGh"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;Ghana News</h4>
+                <h3 ng-if="showGh" style="font-family: Maven Pro;"><i class="fa fa-street-view" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Ghana News</strong></h3>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showGh">
                     <a style="max-width: 90%; font-size: 15px; font-weight: bold; color: black">{{messageGh}}</a><br><br>
                 </div>
-                <div ng-repeat="gh in ghstories" ng-if="showGh" class="col-xs-12" style="border-left: 1px solid #e8e5e5">
-                    <a href="{{gh.link}}" target="_blank" style="color: black">
+                <div ng-repeat="gh in ghstories" ng-if="showGh" class="col-xs-12" style="border-left: 1px solid #e8e5e5; padding: 3px"> 
+                        <div class="col-xs-5">
+                            <a href="{{gh.link}}" target="_blank"><img src="{{gh.imageUrl}}" style="height: 65px; width: 120px"/></a>
+                        </div>   
                         <div class="col-xs-7">
-                            <p style="font-size: 15px; font-weight: bold;">{{gh.title}}</p>
-                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> {{gh.TimeDifference}} h | {{gh.category}}
-                            <p style="padding: 4px"></p>
+                            <p style="font-size: 16px; font-weight: bold; font-family: Maven Pro;"><a href="{{gh.link}}" target="_blank" style="color: black">{{gh.title}}</a></p>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b ng-if="gh.TimeDifference" style="font-family: Maven Pro;">{{gh.TimeDifference}} h | {{gh.category}}</b>
+                            <b ng-if="!gh.TimeDifference" style="font-family: Maven Pro;">{{gh.TimeDiffMins}} m | {{gh.category}}</b>
+                            <p style="padding: 5px"></p>
                         </div>
-                        <img class="col-xs-5" src="{{gh.imageUrl}}" height="65px" />
-                    </a>
                 </div>
             </div>
             <div class="col-xs-12"><p style="padding: 30px"></p></div>
-        </div>  
+            <div class="col-xs-12">
+                <h3 ng-if="showAF" style="font-family: Maven Pro;"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;<strong>From Around the Web</strong></h3>
+                <p style="padding: 5px"></p>
+                <div ng-if="!showAF">
+                    <a style="max-width: 90%; font-size: 15px; font-weight: bold; color: black">{{messageAF}}</a><br><br>
+                </div>
+                <div ng-repeat="af in afstories" ng-if="showAF" class="col-xs-12" style="border-left: 1px solid #e8e5e5; padding: 3px">
+                        <div class="col-xs-7">
+                            <p style="font-size: 16px; font-weight: bold; font-family: Maven Pro;"><a href="{{af.link}}" target="_blank" style="color: black">{{af.title}}</a></p>
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b ng-if="af.TimeDifference" style=" font-family: Maven Pro;">{{af.TimeDifference}} h | {{af.category}}</b> <b ng-if="!af.TimeDifference" style=" font-family: Maven Pro;">{{af.TimeDiffMins}} m | {{af.category}}</b>
+                            <p style="padding: 5px"></p>
+                        </div>
+                        <div class="col-xs-5">
+                            <a href="{{af.link}}" target="_blank"><img src="{{af.imageUrl}}" style="height: 65px; width: 120px"/></a>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <br><br><br><br>
+        </div>
+
 	</div>
 </div>

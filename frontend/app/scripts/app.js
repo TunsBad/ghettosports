@@ -21,11 +21,11 @@ angular.module('ghettoSports', ['ui.router','ngResource','ngDialog'])
                 }
             })
 
-            .state('app.news', {
-                url: 'news',
+            .state('app.headlines', {
+                url: 'headlines',
                 views: {
                     'content@': {
-                        templateUrl : 'views/news.html',
+                        templateUrl : 'views/headlines.html',
                         controller : 'NewsController'
                     }
                 }

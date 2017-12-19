@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+//top stories schema
 var topSchema = new Schema({
 	title: {
 	    type: String,
@@ -24,6 +25,10 @@ var topSchema = new Schema({
 //Virtual
 topSchema.virtual('TimeDifference').get(function() { 
 	return Math.floor((Date.now() - this.time)/(60 * 60 * 1000));
+});
+
+topSchema.virtual('TimeDiffMins').get(function() { 
+	return Math.floor((Date.now() - this.time)/(60 * 1000));
 });
 
 //Making values available as JSON and Objects

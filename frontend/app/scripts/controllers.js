@@ -2,18 +2,22 @@
 
 angular.module('ghettoSports')
 
-.controller('HomeController', ['$scope', 'gossipsFactory', '$http', 'topstoriesFactory', 'ghstoriesFactory', 'headlinesFactory', function ($scope, gossipsFactory, $http, topstoriesFactory, ghstoriesFactory, headlinesFactory) {
+.controller('HomeController', ['$scope', 'gossipsFactory', '$http', 'topstoriesFactory', 'ghstoriesFactory', 'headlinesFactory', 'webstoriesFactory', function ($scope, gossipsFactory, $http, topstoriesFactory, ghstoriesFactory, headlinesFactory, webstoriesFactory) {
 
 	$scope.showGossips = false;
     $scope.showTop = false;
     $scope.showHline = false;
-	$scope.message = "Loading ....";
+    $scope.showGh = false;
+    $scope.showSR = false;
+    $scope.showAF = false;
+
+    $scope.message = "Loading ....";
     $scope.messageTop = "Loading ....";
     $scope.messageGh = "Loading ....";
     $scope.messageHline = "Loading ....";
     $scope.messageSR = "Loading ....";
-    $scope.showGh = false;
-    $scope.showSR = false;
+    $scope.messageAF = "Loading ...."
+    
     $scope.searchText = {};
 
     var currentHeadline = {};
@@ -23,6 +27,7 @@ angular.module('ghettoSports')
             currentHeadline = response.pop();
             $scope.currentHeadline = currentHeadline;
             $scope.HeadlineTimeDiffHrs = Math.floor(currentHeadline.TimeDifference/(60 * 60 * 1000));
+            $scope.HeadlineTimeDiffMins = Math.floor(currentHeadline.TimeDifference/(60 * 1000));
             $scope.showHline = true;
         },
         function(error) {
@@ -60,6 +65,17 @@ angular.module('ghettoSports')
         }
     );
 
+    webstoriesFactory.query(
+        function(response) {
+            $scope.afstories = response;
+            $scope.showAF = true;
+        },
+        function(error) {
+            $scope.messageAF = "Error : " + error.status + " " + error.statusText;
+        }
+    );
+    
+    //search
 	$scope.update = function(query) {        
         $scope.searchText.querystring = query;
 		$http.get('https://ghettosports.herokuapp.com/gossips/search/' + $scope.searchText.querystring)
@@ -72,9 +88,10 @@ angular.module('ghettoSports')
                     };
 		          }, function(error) {
                         $scope.messageSR = "Error : " + error.status + " " + error.statusText;
-            }); //setting success callbacks ....
+            });
 	};
 
+    //facebook share
     $scope.shareBtn = function() {
         FB.ui({
                 method: 'share',
@@ -84,22 +101,20 @@ angular.module('ghettoSports')
 
 	setTimeout(function () {
         $scope.$emit('HomeController');
-    }, 0); //$emit value on $scope
+    }, 0); 
 
 }])
 .controller('NewsController', ['$scope', '$http', function ($scope, $http) {
 
     $scope.showSPB = false;
     $scope.showFFT = false;
-    $scope.showBBC = false;
-    $scope.showFIT = false;
+    $scope.showTS = false;
 
     $scope.messageSPB = "Loading ....";
-    $scope.messageFFT = "Loading ...."
-    $scope.messageFIT = "Loading ...." 
-    $scope.messageBBC = "Loading ...."
+    $scope.messageFFT = "Loading ....";
+    $scope.messageTS = "Loading ....";
 
-    $http.get('https://newsapi.org/v1/articles?source=four-four-two&sortBy=top&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
+    $http.get('https://newsapi.org/v2/top-headlines?sources=four-four-two&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
         .then(function(response) { 
                 $scope.fourfourtwo = response.data;
                 $scope.showFFT = true;
@@ -108,16 +123,16 @@ angular.module('ghettoSports')
             }
         );
 
-	$http.get('https://newsapi.org/v1/articles?source=bbc-sport&sortBy=top&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
+	$http.get('https://newsapi.org/v2/top-headlines?sources=talksport&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
 	    .then(function(response) { 
-                $scope.bbcsport = response.data;
-                $scope.showBBC = true;
+                $scope.talksport = response.data;
+                $scope.showTS = true;
 	        }, function(error) {
-	    	    $scope.messageBBC = "Error: " + error.status + " " + error.statusText;
+	    	    $scope.messageTS = "Error: " + error.status + " " + error.statusText;
 	       }
         );
 
-    $http.get('https://newsapi.org/v1/articles?source=the-sport-bible&sortBy=latest&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
+    $http.get('https://newsapi.org/v2/top-headlines?sources=the-sport-bible&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
         .then(function(response) { 
                 $scope.thesportbible = response.data;
                 $scope.showSPB = true;
@@ -126,18 +141,17 @@ angular.module('ghettoSports')
               }
         );
 
-    $http.get('https://newsapi.org/v1/articles?source=football-italia&sortBy=top&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
-        .then(function(response) { 
-                $scope.footballitalia = response.data;
-                $scope.showFIT = true;
-            }, function(error) {
-                $scope.messageFIT = "Error: " + error.status + " " + error.statusText;
-           }
-        );
+    //facebook share
+    $scope.shareBtn = function() {
+        FB.ui({
+                method: 'share',
+                href: 'https://ghettosports.herokuapp.com/'
+        }, function(response) { });
+    };
 
     setTimeout(function () {
         $scope.$emit('NewsController');
-    }, 0); //check the $emit value on $scope
+    }, 0); 
     
 }])
 .controller('AboutController', ['$scope', function ($scope) {
@@ -186,7 +200,7 @@ angular.module('ghettoSports')
                 ngDialog.close(); 
                 //set values back to defaults.
                 $scope.feedback = { name: "", phone: "", subject: "", comment: "", email: "" };
-                $scope.feedbackForm.$setPristine();
+                $scope.feedbackForm.$setPristine(); //clean form
             }, 
             function(error) {
 

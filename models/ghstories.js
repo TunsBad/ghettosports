@@ -26,6 +26,10 @@ ghSchema.virtual('TimeDifference').get(function() {
 	return Math.floor((Date.now() - this.time)/(60 * 60 * 1000));
 });
 
+ghSchema.virtual('TimeDiffMins').get(function() { 
+	return Math.floor((Date.now() - this.time)/(60 * 1000));
+});
+
 //Making values available as JSON and Objects
 ghSchema.set('toObject', { virtuals: true });
 ghSchema.set('toJSON', { virtuals: true });
