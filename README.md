@@ -1,2 +1,2 @@
-# ghettosports
-Football gossips website
+# footballghetto
+Football news website
