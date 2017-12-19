@@ -8,19 +8,19 @@
     </div>
 	<div class="row row-content">
 		<div class="col-xs-12 col-sm-12 col-md-7" ng-if="!showGossips">
-            <h3>{{message}}</h3>
+            <b style="font-size: 20px; font-family: Maven Pro;">{{message}}</b>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-7" ng-if="showGossips">
         	<div class="col-xs-12">
 
         		<h2 ng-if="!showHline">Transfer gossip: {{messageHline}}</h2>
-                <h1 style="font-family: courier;" ng-if="showHline">Transfer gossip: {{currentHeadline.header}}</h1>
+                <h1 ng-if="showHline">Transfer gossip: {{currentHeadline.header}}</h1>
 
         		<p style="padding: 7px"></p>
         		<div class="col-xs-12 col-sm-6">
-        			<p style="font-size: 16px; font-family: Maven Pro;" ng-if="HeadlineTimeDiffHrs"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b>{{HeadlineTimeDiffHrs}} hours ago | Football</b></p>
-                    <p style="font-size: 16px; font-family: Maven Pro;" ng-if="!HeadlineTimeDiffHrs"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b>{{HeadlineTimeDiffMins}} minutes ago | Football</b></p>
+        			<p style="font-size: 15px; font-family: Maven Pro;" ng-if="HeadlineTimeDiffHrs"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b>{{HeadlineTimeDiffHrs}} hours ago | Football</b></p>
+                    <p style="font-size: 15px; font-family: Maven Pro;" ng-if="!HeadlineTimeDiffHrs"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> <b>{{HeadlineTimeDiffMins}} minutes ago | Football</b></p>
         		</div>
         		<div class="col-sm-2 col-sm-offset-4 hidden-xs">
                     <button ng-click="shareBtn()" class="btn btn-success clearfix"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;Share</button>
@@ -63,7 +63,7 @@
                 <h3 ng-if="showTop" style="font-family: Maven Pro;"><i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Trending Stories</strong></h3>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showTop">
-                    <a style="max-width: 90%; font-size: 15px; font-weight: bold; color: black">{{messageTop}}</a><br><br>
+                    <a style="max-width: 90%; font-size: 16px; font-family: Maven Pro; font-weight: bold; color: black">{{messageTop}}</a><br><br>
                 </div>
                 <div ng-repeat="tp in topstories" ng-if="showTop" class="col-xs-12" style="border-left: 1px solid #e8e5e5; padding: 3px">
                         <div class="col-xs-7">
@@ -81,7 +81,7 @@
                 <h3 ng-if="showGh" style="font-family: Maven Pro;"><i class="fa fa-street-view" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Ghana News</strong></h3>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showGh">
-                    <a style="max-width: 90%; font-size: 15px; font-weight: bold; color: black">{{messageGh}}</a><br><br>
+                    <a style="max-width: 90%; font-size: 16px; font-family: Maven Pro; font-weight: bold; color: black">{{messageGh}}</a><br><br>
                 </div>
                 <div ng-repeat="gh in ghstories" ng-if="showGh" class="col-xs-12" style="border-left: 1px solid #e8e5e5; padding: 3px"> 
                         <div class="col-xs-5">
@@ -100,7 +100,7 @@
                 <h3 ng-if="showAF" style="font-family: Maven Pro;"><i class="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;<strong>From Around the Web</strong></h3>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showAF">
-                    <a style="max-width: 90%; font-size: 15px; font-weight: bold; color: black">{{messageAF}}</a><br><br>
+                    <a style="max-width: 90%; font-size: 16px; font-family: Maven Pro; font-weight: bold; color: black">{{messageAF}}</a><br><br>
                 </div>
                 <div ng-repeat="af in afstories" ng-if="showAF" class="col-xs-12" style="border-left: 1px solid #e8e5e5; padding: 3px">
                         <div class="col-xs-7">
