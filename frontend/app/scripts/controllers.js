@@ -28,6 +28,7 @@ angular.module('ghettoSports')
             $scope.currentHeadline = currentHeadline;
             $scope.HeadlineTimeDiffHrs = Math.floor(currentHeadline.TimeDifference/(60 * 60 * 1000));
             $scope.HeadlineTimeDiffMins = Math.floor(currentHeadline.TimeDifference/(60 * 1000));
+            $scope.updatedat = currentHeadline.toUTC.split(' ')[0] + ' '+ currentHeadline.toUTC.split(' ')[4]; 
             $scope.showHline = true;
         },
         function(error) {

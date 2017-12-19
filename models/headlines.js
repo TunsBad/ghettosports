@@ -14,6 +14,10 @@ headlineSchema.virtual('TimeDifference').get(function() {
 	return (Date.now() - this.time);
 });
 
+headlineSchema.virtual('toUTC').get(function() { 
+	return this.time.toUTCString();
+});
+
 //Making values available as JSON and Objects
 headlineSchema.set('toObject', { virtuals: true });
 headlineSchema.set('toJSON', { virtuals: true });

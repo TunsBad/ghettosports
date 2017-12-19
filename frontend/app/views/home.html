@@ -15,7 +15,7 @@
         	<div class="col-xs-12">
 
         		<h2 ng-if="!showHline">Transfer gossip: {{messageHline}}</h2>
-                <h1 ng-if="showHline">Transfer gossip: {{currentHeadline.header}}</h1>
+                <h2 ng-if="showHline">Transfer gossip: {{currentHeadline.header}}</h2>
 
         		<p style="padding: 7px"></p>
         		<div class="col-xs-12 col-sm-6">
@@ -48,7 +48,7 @@
         	<div class="col-xs-12" ng-if="!showSR">
         		<p style="padding: 2px"></p>
                 <div style="padding: 2px">
-                    <b><p style="font-size: 20px; font-family: Maven Pro;">Updated At ( 2:00 PM GMT )&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p></b>
+                    <b><p style="font-size: 20px; font-family: Maven Pro;">Updated At ( {{updatedat}} GMT )&nbsp;&nbsp;&nbsp;<span class="glyphicon glyphicon-list" aria-hidden="true"></span></p></b>
                 </div>
                 <div ng-repeat="gossip in gossips" class="col-xs-12">
         		    <div style="padding: 9px"><p style="font-size: 17px; font-family: Maven Pro;"><strong>{{gossip.caption}}</strong> {{gossip.gossip}}&nbsp;<strong><a style="color: black" href="{{gossip.link}}" target="_blank">({{gossip.newsagency}})&nbsp;<i class="fa fa-external-link-square" aria-hidden="true"></i></a></strong></p></div>
