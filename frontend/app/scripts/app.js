@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ghettoSports', ['ui.router','ngResource','ngDialog'])
+angular.module('ghettoSports', ['ui.router','ngResource','ngDialog', 'jtt_footballdata'])
 
 .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider        
