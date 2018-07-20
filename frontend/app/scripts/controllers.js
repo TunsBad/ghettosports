@@ -110,6 +110,7 @@ angular.module('ghettoSports')
         var Seasons = [];
         var PremierLeagueId = "";
         var LaLigaId = "";
+        var SaLeagueId = "";
 
         $scope.showSPB = false;
         $scope.showFFT = false;
@@ -159,7 +160,8 @@ angular.module('ghettoSports')
                 id: seasonId,
                 apiKey: apiKey,
             }).then(function(_data) {
-                console.info("PlTable", _data.data.standing);
+                $scope.plstanding = _data.data.standing;
+                console.info("PlTable", $scope.plstanding);
             }).catch(function(_data) {
                 console.info("Error", _data.data);
             });
@@ -172,6 +174,21 @@ angular.module('ghettoSports')
                 id: seasonId,
                 apiKey: apiKey,
             }).then(function(_data) {
+                $scope.pdstanding = _data.data.standing;
+                console.info("PdTable", _data.data.standing);
+            }).catch(function(_data) {
+                console.info("Error", _data.data);
+            });
+
+        }
+
+        var GetSATable = function(seasonId) {
+
+            footballdataFactory.getLeagueTableBySeason({
+                id: seasonId,
+                apiKey: apiKey,
+            }).then(function(_data) {
+                $scope.sastanding = _data.data.standing;
                 console.info("PdTable", _data.data.standing);
             }).catch(function(_data) {
                 console.info("Error", _data.data);
@@ -186,9 +203,11 @@ angular.module('ghettoSports')
                 }).then(function(_data) {
 
                     Seasons = _data.data
+                    console.log("Seasons", Seasons)
                     SetLeagueIds(Seasons);
                     GetPlTable(PremierLeagueId);
                     GetPdTable(LaLigaId);
+                    GetSATable(SaLeagueId);
                 })
                 .catch(function(_data) {
                     console.log("Error loading Seasons, Please contact football-data.org")
@@ -210,6 +229,9 @@ angular.module('ghettoSports')
                         break;
                     case "PD":
                         LaLigaId = Seasons[season].id;
+                        break;
+                    case "SA":
+                        SaLeagueId = Seasons[season].id;
                         break;
                     default:
                         if (season == (Seasons.length - 1)) {
