@@ -92,7 +92,6 @@ angular.module('ghettoSports')
                 });
         };
 
-        //facebook share
         $scope.shareBtn = function() {
             FB.ui({
                 method: 'share',
@@ -108,6 +107,10 @@ angular.module('ghettoSports')
     .controller('NewsController', ['$scope', '$http', 'footballdataFactory', function($scope, $http, footballdataFactory) {
 
         var apiKey = "aa49c8a561634243b60c7d74cca5975b";
+        var Seasons = [];
+        var PremierLeagueId = "";
+        var LaLigaId = "";
+
         $scope.showSPB = false;
         $scope.showFFT = false;
         $scope.showTS = false;
@@ -116,41 +119,110 @@ angular.module('ghettoSports')
         $scope.messageFFT = "Loading ....";
         $scope.messageTS = "Loading ....";
 
-        $http.get('https://newsapi.org/v2/top-headlines?sources=four-four-two&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
-            .then(function(response) {
-                $scope.fourfourtwo = response.data;
-                $scope.showFFT = true;
-            }, function(error) {
-                $scope.messageFFT = "Error: " + error.status + " " + error.statusText;
+
+        var FourFourTwoHeadlines = function() {
+
+            $http.get('https://newsapi.org/v2/top-headlines?sources=four-four-two&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
+                .then(function(response) {
+                    $scope.fourfourtwo = response.data;
+                    $scope.showFFT = true;
+                }, function(error) {
+                    $scope.messageFFT = "Error: " + error.status + " " + error.statusText;
+                });
+        }
+
+        var TalkSportHeadlines = function() {
+
+            $http.get('https://newsapi.org/v2/top-headlines?sources=talksport&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
+                .then(function(response) {
+                    $scope.talksport = response.data;
+                    $scope.showTS = true;
+                }, function(error) {
+                    $scope.messageTS = "Error: " + error.status + " " + error.statusText;
+                });
+        }
+
+        var SportBibleHeadlines = function() {
+
+            $http.get('https://newsapi.org/v2/top-headlines?sources=the-sport-bible&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
+                .then(function(response) {
+                    $scope.thesportbible = response.data;
+                    $scope.showSPB = true;
+                }, function(error) {
+                    $scope.messageSPB = "Error: " + error.status + " " + error.statusText;
+                });
+        }
+
+        var GetPlTable = function(seasonId) {
+
+            footballdataFactory.getLeagueTableBySeason({
+                id: seasonId,
+                apiKey: apiKey,
+            }).then(function(_data) {
+                console.info("PlTable", _data.data.standing);
+            }).catch(function(_data) {
+                console.info("Error", _data.data);
             });
 
-        $http.get('https://newsapi.org/v2/top-headlines?sources=talksport&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
-            .then(function(response) {
-                $scope.talksport = response.data;
-                $scope.showTS = true;
-            }, function(error) {
-                $scope.messageTS = "Error: " + error.status + " " + error.statusText;
+        }
+
+        var GetPdTable = function(seasonId) {
+
+            footballdataFactory.getLeagueTableBySeason({
+                id: seasonId,
+                apiKey: apiKey,
+            }).then(function(_data) {
+                console.info("PdTable", _data.data.standing);
+            }).catch(function(_data) {
+                console.info("Error", _data.data);
             });
 
-        $http.get('https://newsapi.org/v2/top-headlines?sources=the-sport-bible&apiKey=352ed8e2ce5e45d1b9abe1430fdd41e1')
-            .then(function(response) {
-                $scope.thesportbible = response.data;
-                $scope.showSPB = true;
-            }, function(error) {
-                $scope.messageSPB = "Error: " + error.status + " " + error.statusText;
-            });
+        }
 
-        footballdataFactory.getLeagueTableBySeason({
-            id: 445, // 455 La Liga
-            //matchday: ,
-            apiKey: apiKey,
-        }).then(function(_data) {
-            console.info("getLeagueTableBySeason", _data.data.standing);
-        }).catch(function(_data) {
-            console.info("Error", _data.data);
-        });
+        var GetCurrentSeasonTable = function() {
 
-        footballdataFactory.getFixturesBySeason({
+            footballdataFactory.getSeasons({
+                    apiKey: apiKey, // Register for a free api key: http://api.football-data.org/register
+                }).then(function(_data) {
+
+                    Seasons = _data.data
+                    SetLeagueIds(Seasons);
+                    GetPlTable(PremierLeagueId);
+                    GetPdTable(LaLigaId);
+                })
+                .catch(function(_data) {
+                    console.log("Error loading Seasons, Please contact football-data.org")
+                    //Show ngDialog here !
+                });
+
+        };
+
+        GetCurrentSeasonTable();
+        FourFourTwoHeadlines();
+        TalkSportHeadlines();
+        SportBibleHeadlines();
+
+        var SetLeagueIds = function(Seasons) {
+            for (var season = 0; season <= (Seasons.length - 1); season++) {
+                switch (Seasons[season].league) {
+                    case "PL":
+                        PremierLeagueId = Seasons[season].id;
+                        break;
+                    case "PD":
+                        LaLigaId = Seasons[season].id;
+                        break;
+                    default:
+                        if (season == (Seasons.length - 1)) {
+                            break;
+                        } else {
+                            continue;
+                        }
+                }
+            };
+        }
+
+
+        /*footballdataFactory.getFixturesBySeason({
             id: 445,
             //matchday: 10,
             apiKey: apiKey,
@@ -158,19 +230,9 @@ angular.module('ghettoSports')
             console.info("getFixturesBySeason", _data.data.fixtures);
         }).catch(function(_data) {
             console.info("Error", _data.data);
-        });
+        }); */
 
-        footballdataFactory.getSeasons({
-            //season: '<SEASON>', // (optional) Default is the current year (4 digit), e.g: '2015'
-            //protocol: '<PROTOCOL>', // (optional) 'http', 'https', 'auto'
-            apiKey: apiKey, // Register for a free api key: http://api.football-data.org/register
-        }).then(function(_data) {
-            console.info("Seasons", _data.data);
-        }).catch(function(_data) {
-            //on error
-        });
 
-        //facebook share
         $scope.shareBtn = function() {
             FB.ui({
                 method: 'share',
