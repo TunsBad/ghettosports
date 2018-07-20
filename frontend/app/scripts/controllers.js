@@ -2,7 +2,7 @@
 
 angular.module('ghettoSports')
 
-    .controller('HomeController', ['$scope', 'gossipsFactory', '$http', 'topstoriesFactory', 'ghstoriesFactory', 'headlinesFactory', 'webstoriesFactory', function($scope, gossipsFactory, $http, topstoriesFactory, ghstoriesFactory, headlinesFactory, webstoriesFactory) {
+    .controller('HomeController', ['$scope', 'gossipsFactory', '$http', 'topstoriesFactory', 'ghstoriesFactory', 'headlinesFactory', 'webstoriesFactory', 'footballdataFactory', function($scope, gossipsFactory, $http, topstoriesFactory, ghstoriesFactory, headlinesFactory, webstoriesFactory, footballdataFactory) {
 
         $scope.showGossips = false;
         $scope.showTop = false;
@@ -76,7 +76,16 @@ angular.module('ghettoSports')
             }
         );
 
-        //search
+         footballdatafactory.getfixturesbyseason({
+            id: 445,
+            //matchday: 10,
+            apikey: apikey,
+        }).then(function(_data) {
+            console.info("getfixturesbyseason", _data.data.fixtures);
+        }).catch(function(_data) {
+            console.info("error", _data.data);
+        }); 
+
         $scope.update = function(query) {
             $scope.searchText.querystring = query;
             $http.get('https://ghettosports.herokuapp.com/gossips/search/' + $scope.searchText.querystring)
@@ -244,15 +253,7 @@ angular.module('ghettoSports')
         }
 
 
-        /*footballdataFactory.getFixturesBySeason({
-            id: 445,
-            //matchday: 10,
-            apiKey: apiKey,
-        }).then(function(_data) {
-            console.info("getFixturesBySeason", _data.data.fixtures);
-        }).catch(function(_data) {
-            console.info("Error", _data.data);
-        }); */
+       
 
 
         $scope.shareBtn = function() {
