@@ -26,10 +26,12 @@ angular.module('ghettoSports')
         var GetFixtures = function() {
 
             footballdataFactory.getFixturesBySeason({
-                id: 426,
+                id: 445,
+                matchday: 38,
                 apiKey: apiKey,
             }).then(function(_data) {
-                console.info("getFixturesBySeason", _data.data.fixtures);
+                $scope.fixtures = _data.data.fixtures;
+                console.info("getFixturesBySeason", $scope.fixtures);
             }).catch(function(_data) {
                 console.info("error", _data.data);
             });

@@ -60,6 +60,23 @@
         <div class="col-xs-12 col-sm-12 col-md-5 hidden-xs">
             <div class="col-xs-12"><p style="padding: 12px"></p></div>
             <div class="col-xs-12">
+               <table class="table table-sm table-hover">
+                   <!--  <div class="col-sm-3 col-sm-offset-9">
+                        <p><b>2017/08/11</b></p>
+                    </div> -->
+                    <tbody>
+                        <tr ng-repeat= "fixture in fixtures">
+                            <td class="col-sm-1"><strong>{{fixture.status}}</strong></td>
+                            <td class="col-sm-4" style="text-align: right;"><strong>{{fixture.homeTeamName}}</strong></td>
+                            <td class="col-sm-1"><strong>{{fixture.result.goalsHomeTeam}}</strong></td>
+                            <td class="col-sm-1"><strong>{{fixture.result.goalsAwayTeam}}</strong></td>
+                            <td class="col-sm-4" style="text-align: left;">{{fixture.awayTeamName}}</td>
+                        </tr>
+                    </tbody>
+                </table>  
+            </div>
+            <div class="col-xs-12"><p style="padding: 12px"></p></div>
+            <div class="col-xs-12">
                 <h3 ng-if="showTop" style="font-family: Maven Pro;"><i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Trending Stories</strong></h3>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showTop">
