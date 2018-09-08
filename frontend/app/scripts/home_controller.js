@@ -6,6 +6,9 @@ angular.module('ghettoSports')
 
         var apiKey = "aa49c8a561634243b60c7d74cca5975b";
         var currentHeadline = {};
+        var seasonId = '';
+        var currentLeague = 'Premier League'
+        var currentLeagueCode = 'PL'
 
         $scope.showGossips = false;
         $scope.showTop = false;
@@ -106,12 +109,107 @@ angular.module('ghettoSports')
             );
         };
 
+        var GetLeagueId = function(leagueName, code) {
+            var data = '';
+            
+            $http({
+                method: 'GET',
+                url: 'http://api.football-data.org/v2/competitions/',
+                headers: {
+                    'X-Auth-Token': apiKey
+                },
+            }).then(function successCallback(response) {
+                var name = '';
+                var premierLeagueSeasonId = '';
+
+                data = response.data.competitions;
+
+                for(var i = 0; i <= data.length; i++){
+                    name = data[i].name;
+                    if (name == leagueName && data[i].code == code){
+                        premierLeagueSeasonId = data[i].id;
+                        $scope.premierLeagueSeasonId = premierLeagueSeasonId;
+                        console.log(premierLeagueSeasonId);
+                        break;
+                    };
+                };
+                
+                GetLeagueSeason(premierLeagueSeasonId);
+            }, function errorCallback(response) {
+                console.log(response);
+            });
+        }
+
+        var GetLeagueSeason = function(leagueid) {
+            var season = '';
+            var currentMatchday = '';
+
+            $http({
+                method: 'GET',
+                url: 'http://api.football-data.org/v2/competitions/' + leagueid + '/standings',
+                headers: {
+                    'X-Auth-Token': apiKey
+                },
+            }).then(function successCallback(response) {
+                console.log(response.data.season);
+
+                season = response.data.season;
+                $scope.currentMatchday = season.currentMatchday;
+
+                //TODO: GET THE CURRENT LEAGUE STANDING HERE
+
+                MatchdayGames(leagueid, $scope.currentMatchday);
+            }, function errorCallback(response) {
+                console.log(response);
+
+            });
+        }
+
+        var MatchdayGames = function(leagueid, matchday) {
+            $http({
+                method: 'GET',
+                url: 'http://api.football-data.org/v2/competitions/' + leagueid + '/matches?matchday=' + matchday,
+                headers: {
+                    'X-Auth-Token': apiKey
+                },
+            }).then(function successCallback(response) {
+                console.log(response);
+
+            }, function errorCallback(response) {
+                console.log(response);
+
+            });
+        }
+
         GetHeadlines();
         GetGossips();
         GetTopStories();
         GetGhStories();
         GetWebStories();
         GetFixtures();
+        GetLeagueId(currentLeague, currentLeagueCode);
+        
+        $scope.GetLeague = function(leagueName, code) {
+            currentLeague = leagueName;
+            currentLeagueCode = code;
+            GetLeagueId(currentLeague, currentLeagueCode)
+        }
+
+        $scope.nextMatchdayGames = function(leagueid) {
+            $scope.currentMatchday += 1;
+            if ($scope.currentMatchday == 21) 
+                 $scope.currentMatchday -= 1;
+            console.log(leagueid, $scope.currentMatchday);
+            MatchdayGames(leagueid, $scope.currentMatchday)
+        };
+
+        $scope.previousMatchdayGames = function(leagueid) {
+            $scope.currentMatchday -= 1;
+            if ($scope.currentMatchday == 0) 
+                 $scope.currentMatchday += 1;
+            console.log(leagueid, $scope.currentMatchday);
+            MatchdayGames(leagueid, $scope.currentMatchday)
+        };
 
         $scope.update = function(query) {
             $scope.searchText.querystring = query;
@@ -140,3 +238,10 @@ angular.module('ghettoSports')
         }, 0);
 
     }]);
+
+
+//var todayISOS = new Date().toISOString().slice(0, 10);
+//var today = new Date();
+//today.setDate(today.getDate() - 10);
+//var tendaysISO = today.toISOString();
+//var tendaysISOS = tendaysISO.slice(0, 10);
