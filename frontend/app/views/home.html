@@ -77,7 +77,17 @@
             </div>
             <div class="col-xs-12"><p style="padding: 12px"></p></div>
             <div class="col-xs-12">
-                <button ng-click="nextMatchdayGames(premierLeagueSeasonId)" class="btn btn-success clearfix"><i class="fa fa-facebook-official"></i>&nbsp;&nbsp;MatchDay</button>&nbsp;&nbsp;&nbsp;<button ng-click="previousMatchdayGames(premierLeagueSeasonId)" class="btn btn-success clearfix"><i class=""></i>&nbsp;&nbsp;MatchDay</button>&nbsp;&nbsp;&nbsp;<button ng-click="GetLeague('Primera Division', 'PD')" class="btn btn-primary clearfix"><i class=""></i>&nbsp;&nbsp;League</button>
+
+                <button ng-click="nextMatchdayGames(premierLeagueSeasonId)" class="btn btn-primary clearfix"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;MatchDay&nbsp;{{currentMatchday}}</button>&nbsp;&nbsp;&nbsp;<button ng-click="previousMatchdayGames(premierLeagueSeasonId)" class="btn btn-primary clearfix"><i class="fa fa-minus" aria-hidden="true"></i>&nbsp;&nbsp;MatchDay&nbsp;{{currentMatchday}}</button>
+
+                <div class="col-xs-12"><p style="padding: 12px"></p></div>
+
+                <strong><p>{{currentLeague}}, {{currentLeagueCode}}</p></strong>
+
+                <button ng-click="GetLeagueWithIncreasedIndex()" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Index</button>&nbsp;&nbsp;&nbsp;<button ng-click="GetLeagueWithDecreasedIndex()" class="btn btn-primary clearfix"><i class="fa fa-minus" aria-hidden="true"></i>&nbsp;&nbsp;League</button>
+
+                <div class="col-xs-12"><p style="padding: 12px"></p></div>
+
                 <h3 ng-if="showTop" style="font-family: Maven Pro;"><i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Trending Stories</strong></h3>
                 <p style="padding: 5px"></p>
                 <div ng-if="!showTop">

@@ -7,8 +7,20 @@ angular.module('ghettoSports')
         var apiKey = "aa49c8a561634243b60c7d74cca5975b";
         var currentHeadline = {};
         var seasonId = '';
-        var currentLeague = 'Premier League'
-        var currentLeagueCode = 'PL'
+        var leagueIndex = 0;
+        var selectedLeagues = [{
+            "name": "Premier League",
+            "code": "PL"
+        }, {
+            "name": "Primera Division",
+            "code": "PD"
+        }, {
+            "name": "Serie A",
+            "code": "SA"
+        }];
+
+        $scope.currentLeague = selectedLeagues[leagueIndex].name;
+        $scope.currentLeagueCode = selectedLeagues[leagueIndex].code;
 
         $scope.showGossips = false;
         $scope.showTop = false;
@@ -111,7 +123,7 @@ angular.module('ghettoSports')
 
         var GetLeagueId = function(leagueName, code) {
             var data = '';
-            
+
             $http({
                 method: 'GET',
                 url: 'http://api.football-data.org/v2/competitions/',
@@ -124,16 +136,16 @@ angular.module('ghettoSports')
 
                 data = response.data.competitions;
 
-                for(var i = 0; i <= data.length; i++){
+                for (var i = 0; i <= data.length; i++) {
                     name = data[i].name;
-                    if (name == leagueName && data[i].code == code){
+                    if (name == leagueName && data[i].code == code) {
                         premierLeagueSeasonId = data[i].id;
                         $scope.premierLeagueSeasonId = premierLeagueSeasonId;
                         console.log(premierLeagueSeasonId);
                         break;
                     };
                 };
-                
+
                 GetLeagueSeason(premierLeagueSeasonId);
             }, function errorCallback(response) {
                 console.log(response);
@@ -142,7 +154,6 @@ angular.module('ghettoSports')
 
         var GetLeagueSeason = function(leagueid) {
             var season = '';
-            var currentMatchday = '';
 
             $http({
                 method: 'GET',
@@ -187,26 +198,34 @@ angular.module('ghettoSports')
         GetGhStories();
         GetWebStories();
         GetFixtures();
-        GetLeagueId(currentLeague, currentLeagueCode);
-        
-        $scope.GetLeague = function(leagueName, code) {
-            currentLeague = leagueName;
-            currentLeagueCode = code;
-            GetLeagueId(currentLeague, currentLeagueCode)
+        GetLeagueId($scope.currentLeague, $scope.currentLeagueCode);
+
+        $scope.GetLeagueWithIncreasedIndex = function() {
+            leagueIndex += 1
+            $scope.currentLeague = selectedLeagues[leagueIndex].name;
+            $scope.currentLeagueCode = selectedLeagues[leagueIndex].code;
+            GetLeagueId($scope.currentLeague, $scope.currentLeagueCode)
+        }
+
+        $scope.GetLeagueWithDecreasedIndex = function() {
+            leagueIndex -= 1
+            $scope.currentLeague = selectedLeagues[leagueIndex].name;
+            $scope.currentLeagueCode = selectedLeagues[leagueIndex].code;
+            GetLeagueId($scope.currentLeague, $scope.currentLeagueCode)
         }
 
         $scope.nextMatchdayGames = function(leagueid) {
             $scope.currentMatchday += 1;
-            if ($scope.currentMatchday == 21) 
-                 $scope.currentMatchday -= 1;
+            if ($scope.currentMatchday == 21)
+                $scope.currentMatchday -= 1;
             console.log(leagueid, $scope.currentMatchday);
             MatchdayGames(leagueid, $scope.currentMatchday)
         };
 
         $scope.previousMatchdayGames = function(leagueid) {
             $scope.currentMatchday -= 1;
-            if ($scope.currentMatchday == 0) 
-                 $scope.currentMatchday += 1;
+            if ($scope.currentMatchday == 0)
+                $scope.currentMatchday += 1;
             console.log(leagueid, $scope.currentMatchday);
             MatchdayGames(leagueid, $scope.currentMatchday)
         };

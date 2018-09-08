@@ -152,3 +152,10 @@ angular.module('ghettoSports')
         }, 0);
 
     }]);
+
+
+ //$scope.GetLeague = function() {
+           // $scope.currentLeague = selectedLeagues[leagueIndex].name;
+          //  $scope.currentLeagueCode = selectedLeagues[leagueIndex].code;
+          //  GetLeagueId($scope.currentLeague, $scope.currentLeagueCode)
+       // }
