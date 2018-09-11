@@ -58,34 +58,56 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-5 hidden-xs">
+
+            <div class="col-xs-12"><p style="padding: 12px"></p></div>
+            <p>&nbsp;&nbsp;<strong>{{currentLeague}}, {{currentLeagueCode}}</strong>&nbsp;&nbsp;</p>
+            <button ng-click="GetLeagueWithIncreasedIndex()" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;League</button>
+           
+            <button ng-click="GetLeagueWithDecreasedIndex()" class="btn btn-primary clearfix"><i class="fa fa-minus" aria-hidden="true"></i>&nbsp;&nbsp;League</button>
+
+            <button ng-click="nextMatchdayGames()" class="btn btn-primary clearfix"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;MatchDay&nbsp;{{currentMatchday}}</button>
+
+            <button ng-click="previousMatchdayGames()" class="btn btn-success clearfix"><i class="fa fa-minus" aria-hidden="true"></i>&nbsp;&nbsp;MatchDay&nbsp;{{currentMatchday}}</button>
+
             <div class="col-xs-12"><p style="padding: 12px"></p></div>
             <div class="col-xs-12">
                <table class="table table-sm table-hover">
-                   <!--  <div class="col-sm-3 col-sm-offset-9">
-                        <p><b>2017/08/11</b></p>
-                    </div> -->
                     <tbody>
                         <tr ng-repeat= "fixture in fixtures">
                             <td class="col-sm-1"><strong>{{fixture.status}}</strong></td>
-                            <td class="col-sm-4" style="text-align: right;"><strong>{{fixture.homeTeamName}}</strong></td>
-                            <td class="col-sm-1"><strong>{{fixture.result.goalsHomeTeam}}</strong></td>
-                            <td class="col-sm-1"><strong>{{fixture.result.goalsAwayTeam}}</strong></td>
-                            <td class="col-sm-4" style="text-align: left;">{{fixture.awayTeamName}}</td>
+                            <td class="col-sm-4" style="text-align: right;"><strong>{{fixture.homeTeam.name}}</strong></td>
+                            <td class="col-sm-1"><strong>{{fixture.score.fullTime.homeTeam}}</strong></td>
+                            <td class="col-sm-1"><strong>{{fixture.score.fullTime.awayTeam}}</strong></td>
+                            <td class="col-sm-4" style="text-align: left;"><strong>{{fixture.awayTeam.name}}</strong></td>
                         </tr>
                     </tbody>
                 </table>  
             </div>
+
             <div class="col-xs-12"><p style="padding: 12px"></p></div>
+
             <div class="col-xs-12">
+            <table class="table table-hover table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col" style="font-size: 19px">Premier League</th>
+                        <th scope="col">P</th>
+                        <th scope="col">PTS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr ng-repeat="standing in standings">
+                            <th scope="row">{{standing.position}}</th>
+                            <td><strong>{{standing.team.name}}</strong></td>
+                            <td><strong>{{standing.playedGames}}</strong></td>
+                            <td><strong>{{standing.points}}</strong></td>
+                        </tr>
+                </tbody>
+            </table> 
+            </div>
 
-                <button ng-click="nextMatchdayGames(premierLeagueSeasonId)" class="btn btn-primary clearfix"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;MatchDay&nbsp;{{currentMatchday}}</button>&nbsp;&nbsp;&nbsp;<button ng-click="previousMatchdayGames(premierLeagueSeasonId)" class="btn btn-primary clearfix"><i class="fa fa-minus" aria-hidden="true"></i>&nbsp;&nbsp;MatchDay&nbsp;{{currentMatchday}}</button>
-
-                <div class="col-xs-12"><p style="padding: 12px"></p></div>
-
-                <strong><p>{{currentLeague}}, {{currentLeagueCode}}</p></strong>
-
-                <button ng-click="GetLeagueWithIncreasedIndex()" class="btn btn-primary"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;Index</button>&nbsp;&nbsp;&nbsp;<button ng-click="GetLeagueWithDecreasedIndex()" class="btn btn-primary clearfix"><i class="fa fa-minus" aria-hidden="true"></i>&nbsp;&nbsp;League</button>
-
+            <!-- <div class="col-xs-12">
                 <div class="col-xs-12"><p style="padding: 12px"></p></div>
 
                 <h3 ng-if="showTop" style="font-family: Maven Pro;"><i class="fa fa-newspaper-o" aria-hidden="true"></i>&nbsp;&nbsp;<strong>Trending Stories</strong></h3>
@@ -141,7 +163,7 @@
                         </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="col-xs-12">
             <br><br><br><br>
